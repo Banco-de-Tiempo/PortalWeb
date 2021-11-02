@@ -1,0 +1,49 @@
+body{
+  background-image:    url("img/fondo_banco.jpeg");
+  min-height: 1080px;
+
+
+}
+h1{
+  color: white;
+  font-size: 4rem;
+}
+#testimonials{
+  margin-top: 50px;
+  text-align: center;
+}
+
+h2{
+  color:white;
+  text-align: center;
+
+
+}
+
+.main_app{
+
+  margin:10px;
+  margin-top: 40px;
+}
+.signin_form{
+  margin: 50px;
+}
+#who{
+  font-size: 3rem;
+}
+#signinheader{
+  font-size: 4rem;
+  text-align: center;
+}
+.textheader{
+  margin-bottom: 40px;
+}
+#signinButton{
+  margin: 0 45%;
+  width: 100px;
+  height: 100px;
+}
+.bancologo{
+  width: 400px;
+  height: 400px;
+}
