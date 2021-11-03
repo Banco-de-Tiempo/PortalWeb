@@ -1,9 +1,6 @@
-
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";
-import { getDatabase,ref, set ,onValue} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";
+import { getDatabase, ref, set, onValue} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";
 import { getAuth ,createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyBoPSDdPBSj7IZbIHKc4yfBTszKkfUWwxE",
@@ -15,7 +12,6 @@ const firebaseConfig = {
   appId: "1:399972830225:web:064088a21e1d0cf30eb5b0",
   measurementId: "G-J7Y6ZZT5YJ"
 };
-
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
