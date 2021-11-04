@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
 import { getDatabase, ref, set, onValue} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
-import { getAuth ,createUserWithEmailAndPassword ,signInWithEmailAndPassword,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
+import { getAuth ,createUserWithEmailAndPassword ,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
 const firebaseConfig = {
   apiKey: "AIzaSyBoPSDdPBSj7IZbIHKc4yfBTszKkfUWwxE",
@@ -16,26 +16,28 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getDatabase();
+$("#signinButton").on("click",function(){//On click listener
+  var email=$("#email").val();//get email input value from dom
+  var pass=$("#pass").val();//get pass input value from dom
+  login(email,pass);//Login function
 
-checkauth();//Login function
-
-
-function checkauth(){
-  const auth = getAuth();
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    alert("Bienvenido de nuevo");
-    
-    // ...
-  } else {
-    // User is signed out
-    // ...
-    alert("Porfavor ingrese sesion");
-    window.location.replace("landingpage.html");
-  }
 });
 
+
+function login(email,password){
+  const auth = getAuth();
+signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in
+    const user = userCredential.user;
+    alert("Usuario encontrado");
+    window.location.replace("index.html");
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    alert("Usuario no encontrado");
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
 }
