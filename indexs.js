@@ -28,12 +28,12 @@ onAuthStateChanged(auth, (user) => {
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid;
     alert("Bienvenido de nuevo");
-    window.location.replace("mainadminpage.html");
+    
     // ...
   } else {
     // User is signed out
     // ...
-    alert("No ingresado");
+    alert("Porfavor ingrese sesion");
 
   }
 });
