@@ -30,7 +30,7 @@ signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
-    console.log("si se pudo");
+    console.log(user);
     // ...
   })
   .catch((error) => {
