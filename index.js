@@ -1,6 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";
-import { getDatabase, ref, set, onValue} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";
-import { getAuth ,createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
+import { getDatabase, ref, set, onValue} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
+import { getAuth ,createUserWithEmailAndPassword ,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
 const firebaseConfig = {
   apiKey: "AIzaSyBoPSDdPBSj7IZbIHKc4yfBTszKkfUWwxE",
@@ -16,31 +16,24 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getDatabase();
-$("#signinButton").on("click",function(){
+$("#signinButton").on("click",function(){//On click listener
+  var email=$("#email").val();//get email input value from dom
+  var pass=$("#pass").val();//get pass input value from dom
+  login(email,pass);//Login function
 
 });
 
- async set(ref(db, 'admin/' +"dfgf" ), {
-   username: " tonita",
-   email: "tonita",
-   profile_picture : "tona"
- });
-// writeUserData();
 
-// createUserWithEmailAndPassword(auth, "example@exampled.com", "tona1234")
-//   .then((userCredential) => {
-//     // Signed in
-//     const user = userCredential.user;
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     // ..
-//   });
-  // function writeUserData() {
-  //   const db = getDatabase();
-  //   set(ref(db, 'admin/'+'alan'), {
-  //     username: "alaan"
-  //   });
-  // }
+function login(email,password){
+  const auth = getAuth();
+signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+}
