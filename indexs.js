@@ -16,3 +16,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getDatabase();
+
+checkauth();//Login function
+
+
+function checkauth(){
+  const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    alert("Bienvenido de nuevo");
+    window.location.replace("mainadminpage.html");
+    // ...
+  } else {
+    // User is signed out
+    // ...
+    alert("No ingresado");
+
+  }
+});
+
+}
