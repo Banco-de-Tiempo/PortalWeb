@@ -31,7 +31,7 @@ signInWithEmailAndPassword(auth, email, password)
     // Signed in
     const user = userCredential.user;
     alert("Usuario encontrado");
-    window.location.replace("index.html");
+    window.location.replace("mainadminpage.html");
     console.log(user);
     // ...
   })

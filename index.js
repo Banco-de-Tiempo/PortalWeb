@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
 import { getDatabase, ref, set, onValue} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
-import { getAuth ,createUserWithEmailAndPassword ,signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
+import { getAuth ,createUserWithEmailAndPassword ,signInWithEmailAndPassword,onAuthStateChanged ,signOut } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
 const firebaseConfig = {
   apiKey: "AIzaSyBoPSDdPBSj7IZbIHKc4yfBTszKkfUWwxE",
@@ -31,4 +31,3 @@ signOut(auth).then(() => {
   alert("Error cerrando la sesion");
 });
 }
-

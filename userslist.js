@@ -1,3 +1,4 @@
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
 import { getDatabase, ref, set, onValue} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
 import { getAuth ,createUserWithEmailAndPassword ,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
@@ -18,7 +19,8 @@ const auth = getAuth();
 const db = getDatabase();
 
 const starCountRef = ref(db,'Users');
-  onValue(starCountRef, (snapshot) => {
-    const data = snapshot.val();
+onValue(starCountRef, (snapshot) => {
+  const data = snapshot.val();
+
 });
 // version funcional 
