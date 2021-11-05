@@ -26,7 +26,8 @@ function singout(){
   const auth = getAuth();
 signOut(auth).then(() => {
   alert("Sesion Cerrada Correctamente");
-  window.location.replace("index.html");
+  window.location.href = "index.html";
+  //window.location.replace("index.html");
 }).catch((error) => {
   alert("Error cerrando la sesion");
 });
