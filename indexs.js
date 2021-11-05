@@ -1,8 +1,7 @@
-//Importar los módulos necesarios del firebase
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
+import { getDatabase, ref, set, onValue} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
+import { getAuth ,createUserWithEmailAndPassword ,signInWithEmailAndPassword,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
-//Credenciales de la cuenta de firebase
 const firebaseConfig = {
   apiKey: "AIzaSyBoPSDdPBSj7IZbIHKc4yfBTszKkfUWwxE",
   authDomain: "banco-de-tiempo-77b4e.firebaseapp.com",
@@ -14,26 +13,29 @@ const firebaseConfig = {
   measurementId: "G-J7Y6ZZT5YJ"
 };
 
-
 const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+const db = getDatabase();
 
-//Función de revisar si el usuario está iniciado de sesión
-checkauth();
+checkauth();//Login function
 
 
 function checkauth(){
   const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      //const uid = user.uid;
-      alert("Bienvenido de nuevo");
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    alert("Bienvenido de nuevo");
+    
+    // ...
+  } else {
+    // User is signed out
+    // ...
+    alert("Porfavor ingrese sesion");
 
-    } else {
-      // User is signed out
-      alert("Porfavor ingrese sesion");
-    }
-  });
+  }
+});
 
 }
