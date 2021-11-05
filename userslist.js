@@ -18,8 +18,7 @@ const auth = getAuth();
 const db = getDatabase();
 
 const starCountRef = ref(db,'Users');
-onValue(starCountRef, (snapshot) => {
-  const data = snapshot.val();
-
+  onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val();
 });
 // version funcional 
