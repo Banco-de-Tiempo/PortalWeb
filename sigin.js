@@ -1,8 +1,7 @@
-//Importar los módulos necesarios del firebase
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
+import { getDatabase, ref, set, onValue} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
+import { getAuth ,createUserWithEmailAndPassword ,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
-//Credenciales de la cuenta de firebase
-/*
 const firebaseConfig = {
   apiKey: "AIzaSyBoPSDdPBSj7IZbIHKc4yfBTszKkfUWwxE",
   authDomain: "banco-de-tiempo-77b4e.firebaseapp.com",
@@ -13,13 +12,13 @@ const firebaseConfig = {
   appId: "1:399972830225:web:064088a21e1d0cf30eb5b0",
   measurementId: "G-J7Y6ZZT5YJ"
 };
-*/
 
-//Acción del botón SingIn
-$("#signinButton").on("click",function(){
-  //Tomar los valores del inputs desde
-  var email=$("#email").val();
-  var pass=$("#pass").val();
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+const db = getDatabase();
+$("#signinButton").on("click",function(){//On click listener
+  var email=$("#email").val();//get email input value from dom
+  var pass=$("#pass").val();//get pass input value from dom
   login(email,pass);//Login function
 
 });
@@ -32,7 +31,7 @@ signInWithEmailAndPassword(auth, email, password)
     // Signed in
     const user = userCredential.user;
     alert("Usuario encontrado");
-    window.location.replace("mainadminpage.html");
+    window.location.replace("index.html");
     console.log(user);
     // ...
   })
