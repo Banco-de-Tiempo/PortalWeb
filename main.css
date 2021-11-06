@@ -1,10 +1,9 @@
 body{
-  background-image:    url("img/fondo_banco.jpeg");
-  min-height: 1080px;
+    background: #0A1931;
 }
 
 h1{
-  color: #F8F8F8;
+  color:#F8F8F8;
   font-size: 4rem;
 }
 #testimonials{
@@ -42,15 +41,4 @@ h2{
 .bancologo{
   width: 400px;
   height: 400px;
-}
-
-/*
-  Modificar
-*/
-.forms_text{
-  color:#FFC947;
-  font-size: 30px;
-  opacity: 1;
-  letter-spacing: 0px;
-  font: normal normal normal 30px/37px Montserrat;
 }
