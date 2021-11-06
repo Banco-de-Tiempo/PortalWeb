@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
-import { getDatabase, ref, set, onValue} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
-import { getAuth ,createUserWithEmailAndPassword ,signInWithEmailAndPassword,onAuthStateChanged ,signOut } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
+import { getDatabase } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
+import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
 const firebaseConfig = {
   apiKey: "AIzaSyBoPSDdPBSj7IZbIHKc4yfBTszKkfUWwxE",
@@ -19,16 +19,14 @@ const db = getDatabase();
 
 $("#logoutButton").on("click",function(){//On click listener
   singout();
-
 });
 
 function singout(){
   const auth = getAuth();
-signOut(auth).then(() => {
-  alert("Sesion Cerrada Correctamente");
-  window.location.href = "index.html";
-  //window.location.replace("index.html");
-}).catch((error) => {
-  alert("Error cerrando la sesion");
-});
+  signOut(auth).then(() => {
+    alert("Sesion Cerrada Correctamente");
+    window.location.replace("index.html");
+  }).catch((error) => {
+    alert("Error cerrando la sesion");
+  });
 }
