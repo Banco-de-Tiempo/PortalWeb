@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
 import { getDatabase } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
-import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
+import { getAuth, signOut, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
 const firebaseConfig = {
   apiKey: "AIzaSyBoPSDdPBSj7IZbIHKc4yfBTszKkfUWwxE",
@@ -17,6 +17,9 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getDatabase();
 
+checkauth();//Login function
+
+
 $("#logoutButton").on("click",function(){//On click listener
   singout();
 });
@@ -24,9 +27,26 @@ $("#logoutButton").on("click",function(){//On click listener
 function singout(){
   const auth = getAuth();
   signOut(auth).then(() => {
-    alert("Sesion Cerrada Correctamente");
+    alert("Sesión cerrada correctamente");
     window.location.replace("index.html");
   }).catch((error) => {
-    alert("Error cerrando la sesion");
+    alert("Error cerrando la sesión");
+  });
+}
+
+
+function checkauth(){
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      //const uid = user.uid;
+      //alert("Bienvenido de nuevo");
+    } else {
+      // User is signed out
+      alert("Porfavor ingrese sesión");
+      window.location.replace("iniciarsesion.html");
+    }
   });
 }

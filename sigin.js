@@ -16,6 +16,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getDatabase();
+
 $("#signinButton").on("click",function(){//On click listener
   var email=$("#email").val();//get email input value from dom
   var pass=$("#pass").val();//get pass input value from dom
@@ -34,7 +35,7 @@ function login(email,password){
     console.log(user);
   })
     .catch((error) => {
-      alert("Usuario no encontrado");
+      alert("Usuario no registrado");
       const errorCode = error.code;
       const errorMessage = error.message;
   });
