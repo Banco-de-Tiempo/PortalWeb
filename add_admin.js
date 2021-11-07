@@ -75,6 +75,8 @@ function register_admin(username, email, password){
             var uid = userCredential.uid;
             alert("Registrado exitosamente");
             alert(uid);
+            console.log(uid);
+            alert("uid es: "+userCredential.uid);
             //Escribirlo en la base de datos con el rol de administrador
             set(ref(db, 'Users/' + uid),{
                 name: username,
