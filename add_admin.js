@@ -16,7 +16,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 //Revisar si esta ingresado
-checkauth();//Login function
+checkauth();
 
 
 $("#logoutButton").on("click", function(){
@@ -72,7 +72,7 @@ function register_admin(username, email, password){
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in
-            const uid = userCredential.uid;
+            var uid = userCredential.uid;
             alert("Registrado exitosamente");
             alert(uid);
             //Escribirlo en la base de datos con el rol de administrador
