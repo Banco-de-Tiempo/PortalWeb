@@ -74,7 +74,7 @@ function register_admin(username, email, password){
             // Signed in
             const uidX = userCredential.uid;
             alert(uidX);
-            uid = uidX.ToString();
+            uid = uidX.toString();
             alert("Registrado exitosamente");
             alert("uid es: "+ uid);
             //Escribirlo en la base de datos con el rol de administrador
