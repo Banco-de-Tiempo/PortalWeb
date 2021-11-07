@@ -34,7 +34,7 @@ $("#btn_add_admin").on("click", function(){
     else{
         register_admin(username, email, pass);
     }
-s});
+});
 
 //Función para salir de la sesión
 function singout(){
@@ -74,11 +74,13 @@ function register_admin(username, email, password){
             // Signed in
             const uid = userCredential.uid;
             alert("Registrado exitosamente");
+            alert(uid);
             //Escribirlo en la base de datos con el rol de administrador
             set(ref(db, 'Users/' + uid),{
                 name: username,
                 role: "admin"
             })
+            alert("Admin registrado exitosamente");
         })
         .catch((error) => {
             const errorCode = error.code;
