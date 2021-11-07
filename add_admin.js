@@ -73,6 +73,7 @@ function register_admin(username, email, password){
         .then((userCredential) => {
             // Signed in
             const uidX = userCredential.uid;
+            alert(uidX);
             uid = uidX.ToString();
             alert("Registrado exitosamente");
             alert("uid es: "+ uid);
