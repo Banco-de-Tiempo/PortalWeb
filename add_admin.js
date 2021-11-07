@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
-import { getDatabase } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
+import { getDatabas, ref, set } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
 import { getAuth, signOut, onAuthStateChanged, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
 const firebaseConfig = {
@@ -70,12 +70,17 @@ function checkauth(){
 
 function register_admin(username, email, password){
     const auth = getAuth();
+    const db = getDatabase();
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in
-            //const user = userCredential.user;
+            const uid = userCredential.uid;
             alert("Registrado exitosamente");
-            alert(email.password);
+            
+            set(ref(db, 'Users/' + uid),{
+                name: username,
+                role: "admin"
+            })
         })
         .catch((error) => {
             const errorCode = error.code;
