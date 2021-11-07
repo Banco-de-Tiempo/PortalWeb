@@ -72,9 +72,10 @@ function register_admin(username, email, password){
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in
-            const uid = userCredential.uid.val();
+            const uidX = userCredential.uid;
+            uid = uidX.ToString();
             alert("Registrado exitosamente");
-            alert("uid es: "+uid);
+            alert("uid es: "+ uid);
             //Escribirlo en la base de datos con el rol de administrador
             set(ref(db, 'Users/' + uid),{
                 name: username,
