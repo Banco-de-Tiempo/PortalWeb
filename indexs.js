@@ -17,8 +17,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getDatabase();
 
+/*
 checkauth();//Login function
-
 
 function checkauth(){
   const auth = getAuth();
@@ -35,3 +35,4 @@ function checkauth(){
     }
   });
 }
+*/

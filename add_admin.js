@@ -64,17 +64,17 @@ function checkauth(){
   });
 }
 
-//Función para registrar un nuevo administrador
-
+//Función para registrar un nuevo administrador y escribirlo en la base de datos
 function register_admin(username, email, password){
     const auth = getAuth();
     const db = getDatabase();
+    //Registrar administrador en database
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in
             const uid = userCredential.uid;
             alert("Registrado exitosamente");
-            
+            //Escribirlo en la base de datos con el rol de administrador
             set(ref(db, 'Users/' + uid),{
                 name: username,
                 role: "admin"
