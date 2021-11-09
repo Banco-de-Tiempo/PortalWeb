@@ -74,7 +74,7 @@ function register_admin(username, email, password){
         .then((userCredential) => {
             // Signed in
             const uid = userCredential.user.uid;
-            alert("UID es: " + uid);
+            //alert("UID es: " + uid);
             //Escribirlo en la base de datos con el rol de administrador
             set(ref(db, 'Users/' + uid),{
                 name: username,
@@ -85,6 +85,6 @@ function register_admin(username, email, password){
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            alert("Error, " + errorMessage);
   });
-
 }
