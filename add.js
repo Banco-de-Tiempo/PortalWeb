@@ -36,6 +36,12 @@ $("#btn_add_admin").on("click", function(){
     }
 });
 
+$("#btn_add_user").on("click", function(){
+  
+
+});
+
+
 //Función para salir de la sesión
 function singout(){
   const auth = getAuth();
@@ -54,7 +60,6 @@ function checkauth(){
     if (user) {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
-      //const uid = user.uid;
       //alert("Bienvenido de nuevo");
     } else {
       // User is signed out
@@ -87,4 +92,8 @@ function register_admin(username, email, password){
             const errorMessage = error.message;
             alert("Error, " + errorMessage);
   });
+}
+
+function register_user(){
+
 }
