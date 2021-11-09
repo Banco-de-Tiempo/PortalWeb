@@ -68,15 +68,13 @@ function checkauth(){
 function register_admin(username, email, password){
     const auth = getAuth();
     const db = getDatabase();
+    //const user = auth.currentUser;
     //Registrar administrador en database
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in
-            const uidX = userCredential.uid;
-            alert(uidX);
-            uid = uidX.toString();
-            alert("Registrado exitosamente");
-            alert("uid es: "+ uid);
+            const uid = userCredential.user.uid;
+            alert("UID es: " + uid);
             //Escribirlo en la base de datos con el rol de administrador
             set(ref(db, 'Users/' + uid),{
                 name: username,
