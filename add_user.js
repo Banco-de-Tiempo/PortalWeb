@@ -27,8 +27,8 @@ $("#btn_add_user").on("click", function(){
     var email=$("#email").val();
     var phone=$('#phone').val();
     var address=$('#address').val();
-    alert("Calculando la edad");
 
+    alert("Calculando la edad");
     var age=$('#age').val();
     age = new Date();
     var hoy = new Date();
