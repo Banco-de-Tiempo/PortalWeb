@@ -26,9 +26,9 @@ $("#btn_add_user").on("click", function(){
   var username=$("#username").val();
   var email=$("#email").val();
   var phone=$('#phone').val();
-  var address=$('#phone').val();
+  var address=$('#address').val();
   var age=$('#age').val();
-  var pronoun=$('pro').val();
+  var pronoun=$('#pro').val();
   var job=$('#job').val();
   var jobdesc=$('#jobdesc').val();
 
@@ -49,7 +49,7 @@ $("#btn_add_user").on("click", function(){
   }
   else{
       //register_user(username, email, phone, address, age, pronoun, job, jobdesc, pass);
-      register_user(username, email, pass);
+      register_user(username, email, pass, phone, address, age, pronoun, datejob);
   }
 });
 
@@ -81,26 +81,29 @@ function checkauth(){
     });
 }
 
-function register_user(username, email, password){
+function register_user(username, email, password, phone, address, age, pronoun, datejob){
     const auth = getAuth();
     const db = getDatabase();
     //Registrar administrador en database
-    alert("Hola");
-    alert(auth);
     alert(username);
-    alert(email);
-    alert(password);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const uid = userCredential.user.uid;
-        //alert("UID es: " + uid);
+        alert("UID es: " + uid);
         //Escribirlo en la base de datos con el rol de administrador
         set(ref(db, 'Users/' + uid),{
             name: username,
-            role: "user"
+            role: "user",
+            phone: phone,
+            address: address,
+            age: age,
+            pronoun: pronoun,
+            T1: {
+                datejob: datejob
+            }
         })
-        alert("Admin registrado exitosamente");
+        alert("Usuario registrado exitosamente");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -108,7 +111,6 @@ function register_user(username, email, password){
         alert(errorMessage);
   });
 }
-
 
 /*
 function register_user(username, email, phone, address, age, pronoun, job, jobdesc, datejob, password){
