@@ -1,4 +1,3 @@
-/*
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
 import { getAuth, signOut, onAuthStateChanged, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
@@ -18,7 +17,6 @@ const app = initializeApp(firebaseConfig);
 
 //Revisar si esta ingresado
 checkauth();
- */
 
 $("#logoutButton").on("click", function(){
   singout();
@@ -43,36 +41,19 @@ $("#btn_add_user").on("click", function(){
   var phone=$('#phone').val();
   var address=$('#phone').val();
   var age=$('#age').val();
-  alert(age);
   var pronoun=$('pro').val();
   var job=$('#job').val();
   var jobdesc=$('#jobdesc').val();
 
-  var datejobX = "";
+  var datejob = "";
 
-  if($('#lunes').proc('checked')){
-      datejobX = datejob + "L ";
-  }
-  if($('#martes').proc('checked')){
-      datejobX = datejob + "M ";
-  }
-  if($('#miercoles').proc('checked')){
-      datejobX = datejob + "X ";
-  }
-  if($('#jueves').proc('checked')){
-      datejobX = datejob + "J ";
-  }
-  if($('#viernes').proc('checked')){
-      datejobX = datejob + "V ";
-  }
-  if($('#sabado').proc('checked')){
-      datejobX = datejob + "S ";
-  }
-  if($('#domingo').proc('checked')){
-      datejobX = datejob + "D ";
-  }
-  datejob = datejobX.toString();
-  alert("Los días son: " + datejob);
+  if($('#lunes').is(':checked')){ datejob = datejob + "L "; }
+  if($('#martes').is(':checked')){ datejob = datejob + "M "; }
+  if($('#miercoles').is(':checked')){ datejob = datejob + "X "; }
+  if($('#jueves').is(':checked')){ datejob = datejob + "J "; }
+  if($('#viernes').is(':checked')){ datejob = datejob + "V "; }
+  if($('#sabado').is(':checked')){ datejob = datejob + "S "; }
+  if($('#domingo').is(':checked')){ datejob = datejob + "D "; }
 
   var pass=$("#pass").val();
   var confirm_pass=$("#confirm_pass").val();
