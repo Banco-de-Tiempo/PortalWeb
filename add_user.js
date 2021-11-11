@@ -28,11 +28,16 @@ $("#btn_add_user").on("click", function(){
     var phone=$('#phone').val();
     var address=$('#address').val();
 
-    alert("Calculando la edad");
-    var age=$('#age').val();
-    var today = new Date();
-    alert(age);
-    alert(today);
+    //Calcular la edad
+    var date = new Date();
+    var birthday = $("#age").val();
+    alert(birthday);
+    var startDate = new Date(birthday);
+    var newDate = date.getTime() - startDate.getTime();
+    var age = Math.floor(newDate / 1000 / 60 / 60 / 24 /365);
+    if (isNaN(age)){
+        age = "";
+    }
 
     var pronoun=$('#pronoun').val();
     var job=$('#job').val();
@@ -54,7 +59,6 @@ $("#btn_add_user").on("click", function(){
         alert("Contraseñas distintas");
     }
     else{
-        //register_user(username, email, phone, address, age, pronoun, job, jobdesc, pass);
         register_user(username, email, pass, phone, address, age, pronoun, job, jobdesc, datejob);
     }
 });
