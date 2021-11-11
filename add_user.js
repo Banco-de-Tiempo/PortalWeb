@@ -107,7 +107,7 @@ function register_user(username, email, password, phone, address, age, pronoun, 
     const auth = getAuth();
     const db = getDatabase();
     //Registrar administrador en database
-    alert(username);
+    //alert(username);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
