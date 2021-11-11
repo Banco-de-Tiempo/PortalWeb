@@ -99,19 +99,21 @@ function register_admin(username, email, password){
     const db = getDatabase();
     //Registrar administrador en database
     createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in
-            const uid = userCredential.user.uid;
-            //alert("UID es: " + uid);
-            //Escribirlo en la base de datos con el rol de administrador
-            set(ref(db, 'Users/' + uid),{
-                name: username,
-                role: "admin"
-            })
-            alert("Admin registrado exitosamente");
+      .then((userCredential) => {
+        // Signed in
+        const uid = userCredential.user.uid;
+        //alert("UID es: " + uid);
+        //Escribirlo en la base de datos con el rol de administrador
+        set(ref(db, 'Users/' + uid),{
+            name: username,
+            role: "admin"
         })
-        .catch((error) => {
-            //..
+        alert("Admin registrado exitosamente");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
   });
 }
 
@@ -119,28 +121,30 @@ function register_user(username, email, phone, address, age, pronoun, job, jobde
   const auth = getAuth();
   const db = getDatabase();
   //Registrar usuario en database
-  createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-          // Signed in
-          const uid = userCredential.user.uid;
-          //alert("UID es: " + uid);
-          //Escribirlo en la base de datos
-          set(ref(db, 'Users/' + uid),{
-              name: username,
-              role: "user",
-              phone: phone,
-              pronoun: pronoun,
-              address: address,
-              age: age,
-              T1: {
-                datejob: datejob,
-                jobtitle: job,
-                jobdesc: jobdesc
-              }
-          })
-          alert("Usuario registrado exitosamente");
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const uid = userCredential.user.uid;
+      //alert("UID es: " + uid);
+      //Escribirlo en la base de datos con el rol de administrador
+      set(ref(db, 'Users/' + uid),{
+        name: username,
+        role: "user",
+        phone: phone,
+        pronoun: pronoun,
+        address: address,
+        age: age,
+        T1: {
+          datejob: datejob,
+          jobtitle: job,
+          jobdesc: jobdesc
+        }
       })
-      .catch((error) => {
-          //..
-      });
+      alert("Usuario registrado exitosamente");
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+    });
 }
