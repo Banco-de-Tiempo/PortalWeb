@@ -48,38 +48,69 @@ $("#btn_add_user").on("click", function(){
       alert("Contraseñas distintas");
   }
   else{
-      register_user(username, email, phone, address, age, pronoun, job, jobdesc, pass);
+      //register_user(username, email, phone, address, age, pronoun, job, jobdesc, pass);
+      register_user(username, email, pass);
   }
 });
 
 
 //Función para salir de la sesión
 function singout(){
-  const auth = getAuth();
-  signOut(auth).then(() => {
-    alert("Sesión cerrada correctamente");
-    window.location.replace("index.html");
-  }).catch((error) => {
-    alert("Error cerrando la sesión");
-  });
+    const auth = getAuth();
+    signOut(auth).then(() => {
+        alert("Sesión cerrada correctamente");
+        window.location.replace("index.html");
+    }).catch((error) => {
+        alert("Error cerrando la sesión");
+    });
 }
 
 //Función de checar si está ingresado
 function checkauth(){
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      //alert("Bienvenido de nuevo");
-    } else {
-      // User is signed out
-      alert("Porfavor ingrese sesión");
-      window.location.replace("iniciarsesion.html");
-    }
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        //alert("Bienvenido de nuevo");
+        } else {
+        // User is signed out
+        alert("Porfavor ingrese sesión");
+        window.location.replace("iniciarsesion.html");
+        }
+    });
+}
+
+function register_user(username, email, password){
+    const auth = getAuth();
+    const db = getDatabase();
+    //Registrar administrador en database
+    alert("Hola");
+    alert(auth);
+    alert(username);
+    alert(email);
+    alert(password);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const uid = userCredential.user.uid;
+        //alert("UID es: " + uid);
+        //Escribirlo en la base de datos con el rol de administrador
+        set(ref(db, 'Users/' + uid),{
+            name: username,
+            role: "user"
+        })
+        alert("Admin registrado exitosamente");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
   });
 }
 
+
+/*
 function register_user(username, email, phone, address, age, pronoun, job, jobdesc, datejob, password){
   const auth = getAuth();
   const db = getDatabase();
@@ -111,3 +142,4 @@ function register_user(username, email, phone, address, age, pronoun, job, jobde
       alert(errorMessage);
     });
 }
+*/
