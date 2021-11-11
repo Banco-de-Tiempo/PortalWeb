@@ -25,6 +25,7 @@ $("#logoutButton").on("click", function(){
 $("#btn_delete_user").on("click", function(){
     var email=$('#email').val();
     alert(email);
+    delete_user(email);
 });
 
 //Función para salir de la sesión
@@ -54,3 +55,17 @@ function checkauth(){
     });
 }
 
+function delete_user(email){
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+            const uid = user.uid;
+            alert(uid);
+        } else {
+            // User is signed out
+            // ...
+        }
+    });
+}
