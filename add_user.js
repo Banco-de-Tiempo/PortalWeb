@@ -27,12 +27,17 @@ $("#btn_add_user").on("click", function(){
     var email=$("#email").val();
     var phone=$('#phone').val();
     var address=$('#address').val();
-    var age=$('#age').val();
+    alert("Calculando la edad");
+
+    var age=$('#age').on('change', edad);
+
+    alert("Termine");
+
     var pronoun=$('#pronoun').val();
     var job=$('#job').val();
     var jobdesc=$('#jobdesc').val();
-
     var datejob = "";
+
 
     if($('#lunes').is(':checked')){ datejob = datejob + "L "; }
     if($('#martes').is(':checked')){ datejob = datejob + "M "; }
@@ -78,6 +83,19 @@ function checkauth(){
         window.location.replace("iniciarsesion.html");
         }
     });
+}
+
+function edad(){
+    fecha = $(this).val();
+    var hoy = new Date();
+    var birthday = new Date(fecha);
+    var edad = hoy.getFullYear() - birthday.getFullYear();
+    var m = hoy.getMonth() - birthday.getMonth();
+
+    if (m < 0 || (m === 0 && hoy.getDate() < birthday.getDate())) {
+        edad--;
+    }
+    alert("Años");
 }
 
 function register_user(username, email, password, phone, address, age, pronoun, job, jobdesc, datejob){
