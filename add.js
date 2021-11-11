@@ -111,9 +111,7 @@ function register_admin(username, email, password){
             alert("Admin registrado exitosamente");
         })
         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert("Error, " + errorMessage);
+            //..
   });
 }
 
@@ -143,8 +141,6 @@ function register_user(username, email, phone, address, age, pronoun, job, jobde
           alert("Usuario registrado exitosamente");
       })
       .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert("Error, " + errorMessage);
+          //..
       });
 }
