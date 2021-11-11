@@ -90,19 +90,6 @@ function checkauth(){
     });
 }
 
-function edad(){
-    fecha = $(this).val();
-    var hoy = new Date();
-    var birthday = new Date(fecha);
-    var edad = hoy.getFullYear() - birthday.getFullYear();
-    var m = hoy.getMonth() - birthday.getMonth();
-
-    if (m < 0 || (m === 0 && hoy.getDate() < birthday.getDate())) {
-        edad--;
-    }
-    alert("Años");
-}
-
 function register_user(username, email, password, phone, address, age, pronoun, job, jobdesc, datejob){
     const auth = getAuth();
     const db = getDatabase();
