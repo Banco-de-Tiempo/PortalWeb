@@ -89,7 +89,7 @@ function register_user(username, email, password, phone, address, age, pronoun, 
       .then((userCredential) => {
         // Signed in
         const uid = userCredential.user.uid;
-        alert("UID es: " + uid);
+        //alert("UID es: " + uid);
         //Escribirlo en la base de datos con el rol de administrador
         set(ref(db, 'Users/' + uid),{
             name: username,
@@ -99,9 +99,9 @@ function register_user(username, email, password, phone, address, age, pronoun, 
             age: age,
             pronoun: pronoun,
             status: "No verificado",
-            rating: 0,
-            totjobs: 0,
-            totrating: 0,
+            rating: "0",
+            totjobs: "0",
+            totrating: "0",
             jobs: {
                 T1: {
                     jobtitle: job,
