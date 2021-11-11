@@ -119,7 +119,7 @@ function register_user(username, email, phone, address, age, pronoun, job, jobde
   const auth = getAuth();
   const db = getDatabase();
   //Registrar usuario en database
-  createUserWithEmailAndPassword(auth, email, password)
+  createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
           // Signed in
           const uid = userCredential.user.uid;
