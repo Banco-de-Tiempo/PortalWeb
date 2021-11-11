@@ -29,9 +29,10 @@ $("#btn_add_user").on("click", function(){
     var address=$('#address').val();
     alert("Calculando la edad");
 
-    var age=$('#age').on('change', edad);
-
-    alert("Termine");
+    var age=$('#age').val();
+    age = new Date();
+    var hoy = new Date();
+    alert(parseInt((hoy - age) / (1000*60*60*24*365)));
 
     var pronoun=$('#pronoun').val();
     var job=$('#job').val();
