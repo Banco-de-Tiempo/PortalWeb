@@ -28,7 +28,7 @@ $("#btn_add_user").on("click", function(){
   var phone=$('#phone').val();
   var address=$('#address').val();
   var age=$('#age').val();
-  var pronoun=$('#pro').val();
+  var pronoun=$('#pronoun').val();
   var job=$('#job').val();
   var jobdesc=$('#jobdesc').val();
 
