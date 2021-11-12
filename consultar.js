@@ -31,13 +31,14 @@ $("#btn_consultar").on("click", function(){
     consultar();
 });
 
-function consultar(){
+//Funcion de consultar
+function consultar(username){
     const db = getDatabase();
-    const starCountRef = ref(db, 'Users');
+    const tabla = document.querySelector('#lista-usuarios tbody');
+    const starCountRef = ref(db, 'Users/');
     onValue(starCountRef, (snapshot) => {
         const data = snapshot.val();
         console.log(data);
-        updateStarCount(postElement, data);
     });
 }
 
