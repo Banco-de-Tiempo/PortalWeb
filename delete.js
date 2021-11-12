@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
-import { getDatabase, ref } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
 
@@ -65,7 +65,7 @@ function delete_user(username){
             //const uid = childSnapshot.key;
             const childData = childSnapshot.val();
             //alert(childData.name);
-            
+            alert("Entrando...");
             if (username == childSnapshot.val()){
                 alert("Encontrado");
             } else {
