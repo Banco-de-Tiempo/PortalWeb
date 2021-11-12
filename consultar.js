@@ -27,12 +27,11 @@ $("#btn_consultar").on("click", function(){
     var phone=$('#phone').val();
     var email=$('#email').val();
 
-    //consultar(username, phone, email);
-    consultar();
+    consultar(username);
 });
 
-//Funcion de consultar
-function consultar(username){
+//Funcion de consultar usuario
+function consultar(username, phone, email){
     
     const db = getDatabase();
     const starCountRef = ref(db, 'Users/');
@@ -41,9 +40,8 @@ function consultar(username){
         snapshot.forEach((childSnapshot) => {
             const uid = childSnapshot.key;
             const childData = childSnapshot.val();
-            alert(childData.name);
-
-            //..
+            //alert(childData.name);
+            
 
 
 

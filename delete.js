@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
+import { getDatabase, ref } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-admin/app.js";
 
@@ -25,9 +25,8 @@ $("#logoutButton").on("click", function(){
 });
 
 $("#btn_delete_user").on("click", function(){
-    var email=$('#email').val();
-    alert(email);
-    delete_user(email);
+    var username=$('#username').val();
+    delete_user(username);
 });
 
 //Función para salir de la sesión
@@ -57,16 +56,27 @@ function checkauth(){
     });
 }
 
-function delete_user(email){
-    admin.auth().getUserByEmail(email)
-        .then((userRecord) => {
-            // See the UserRecord reference doc for the contents of userRecord.
-            alert(userRecord);
-            console.log(userRecord);
-        })
-        .catch((error) => {
-            console.log('Error fetching user data:', error);
-    });
+//Funcion para eliminar el usuario
+function delete_user(username){
+    const db = getDatabase();
+    const starCountRef = ref(db, 'Users/');
+
+    onValue(starCountRef, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+            //const uid = childSnapshot.key;
+            const childData = childSnapshot.val();
+            //alert(childData.name);
+            
+            if (username == childSnapshot.val()){
+                alert("Encontrado");
+            } else {
+                alert("No encontrado");
+            }
+
+
+
+        });
+    }, {onlyOnce: true});
 }
 
 
