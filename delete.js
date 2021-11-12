@@ -59,23 +59,23 @@ function delete_user(username){
     const db = getDatabase();
     const starCountRef = ref(db, 'Users/');
 
+    var encontrado = new Boolean(false);
+    
     onValue(starCountRef, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
             //const uid = childSnapshot.key;
             const childData = childSnapshot.val();
             //alert(childData.name);
-            alert("Entrando...");
-            if (username == childSnapshot.val()){
+            if (username == childData.name){
                 alert("Encontrado");
-            } else {
-                alert("No encontrado");
+                encontrado = true;
+                //childData.rating.remove();
             }
-            
-
-
         });
-    }, {onlyOnce: true});
+        if (encontrado == false) {
+            alert("Usuario no encontrado o no existe en base de datos");
+        }
+    }, {
+        onlyOnce: true
+    });
 }
-
-
-
