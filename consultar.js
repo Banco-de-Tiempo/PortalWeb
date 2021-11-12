@@ -46,7 +46,9 @@ function consultar(username, phone, email){
 
 
         });
-    }, {onlyOnce: true});
+    }, {
+        onlyOnce: true
+    });
 }
 
 
