@@ -31,7 +31,6 @@ $("#btn_add_user").on("click", function(){
     //Calcular la edad
     var date = new Date();
     var birthday = $("#age").val();
-    alert(birthday);
     var startDate = new Date(birthday);
     var newDate = date.getTime() - startDate.getTime();
     var age = Math.floor(newDate / 1000 / 60 / 60 / 24 /365);
@@ -43,7 +42,6 @@ $("#btn_add_user").on("click", function(){
     var job=$('#job').val();
     var jobdesc=$('#jobdesc').val();
     var datejob = "";
-
 
     if($('#lunes').is(':checked')){ datejob = datejob + "L "; }
     if($('#martes').is(':checked')){ datejob = datejob + "M "; }

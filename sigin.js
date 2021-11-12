@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
-import { getDatabase } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
+import { getDatabase, onValue, ref } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
 const firebaseConfig = {
@@ -24,19 +24,25 @@ $("#signinButton").on("click",function(){//On click listener
 });
 
 
-function login(email,password){
-  const auth = getAuth();
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    alert("Usuario encontrado");
-    window.location.replace("mainadminpage.html");
-    console.log(user);
-  })
-    .catch((error) => {
-      alert("Usuario no registrado");
-      const errorCode = error.code;
-      const errorMessage = error.message;
+function login(email, password){
+    const auth = getAuth();
+    const db = getDatabase()
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+      // Signed in
+      const uidAdmin = userCredential.user.uid;
+      onValue(ref(db, '/Users/' + uidAdmin), (snapshot) => {
+        if(snapshot.val().role == 'Admin'){
+          alert("Usuario encontrado");
+          window.location.replace("mainadminpage.html");
+        }
+      }, {
+        onlyOnce: true
+      });
+    })
+      .catch((error) => {
+        alert("Usuario no registrado");
+        const errorCode = error.code;
+        const errorMessage = error.message;
   });
 }
