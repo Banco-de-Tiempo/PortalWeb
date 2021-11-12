@@ -38,36 +38,21 @@ function login(email,password){
         if (snapshot.exists()) {
           const data = snapshot.val();
           const role = data.role;
-          alert(role);
+          if (role == 'admin'){
+            alert("Bienbenido admin");
+            window.location.replace("mainadminpage.html");
+          } else {
+            alert("No eres admin");
+          }
         }
       }).catch((error) => {
         console.error(error);
         alert(error);
       });
-      
+
     }).catch((error) => {
         alert("Usuario no registrado");
         const errorCode = error.code;
         const errorMessage = error.message;
     });
-
-
-    /*
-    const user = auth.currentUser;
-    if (user != null) {
-      const role = user.role;
-      if(role == 'Admin'){
-        alert("Eres admin");
-        window.location.replace("mainadminpage.html");
-      }
-      else{
-        alert("No eres admin");
-        signOut(auth).then(() => {
-          //..
-        }).catch((error) => {
-          //..
-        });
-      }
-    }
-    */
 }
