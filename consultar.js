@@ -33,16 +33,23 @@ $("#btn_consultar").on("click", function(){
 
 //Funcion de consultar
 function consultar(username){
+    
     const db = getDatabase();
-    const tabla = document.querySelector('#lista-usuarios tbody');
     const starCountRef = ref(db, 'Users/');
+
     onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        console.log(data);
-    });
+        snapshot.forEach((childSnapshot) => {
+            const uid = childSnapshot.key;
+            const childData = childSnapshot.val();
+            alert(childData.name);
+
+            //..
+
+
+
+        });
+    }, {onlyOnce: true});
 }
-
-
 
 
 //Función para salir de la sesión
