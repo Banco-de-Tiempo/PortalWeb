@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
 import { getDatabase, child, ref, get } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
 const firebaseConfig = {
   apiKey: "AIzaSyBoPSDdPBSj7IZbIHKc4yfBTszKkfUWwxE",
@@ -14,8 +14,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
-const db = getDatabase();
 
 $("#signinButton").on("click",function(){//On click listener
   var email=$("#email").val();//get email input value from dom
@@ -23,7 +21,7 @@ $("#signinButton").on("click",function(){//On click listener
   login(email,pass);//Login function
 });
 
-
+//Funcion de login
 function login(email,password){
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
@@ -34,11 +32,16 @@ function login(email,password){
       //window.location.replace("mainadminpage.html");
 
       const dbRef = ref(getDatabase());
+      //Revisar en base de datos si el usuario tiene el rol de admin
       get(child(dbRef, 'Users/' + uid)).then((snapshot) => {
+        //Si el usuario está escrito en base de datos
         if (snapshot.exists()) {
+          //Tomar todo los valores y leer el role del usuario
           const data = snapshot.val();
           const role = data.role;
+          //Comprobar si es admin
           if (role == 'admin'){
+            //Redirigir a la página de inicio
             alert("Bienbenido admin");
             window.location.replace("mainadminpage.html");
           } else {
@@ -49,7 +52,7 @@ function login(email,password){
         console.error(error);
         alert(error);
       });
-
+    //En caso de no estar registrado
     }).catch((error) => {
         alert("Usuario no registrado");
         const errorCode = error.code;
