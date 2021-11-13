@@ -42,7 +42,7 @@ function login(email,password){
           //Comprobar si es admin
           if (role == 'admin'){
             //Redirigir a la página de inicio
-            alert("Bienbenido admin");
+            alert("Bienvenido admin");
             window.location.replace("mainadminpage.html");
           } else {
             alert("No eres admin");
