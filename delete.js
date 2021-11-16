@@ -67,9 +67,10 @@ function delete_user(username){
             //alert(childData.name);
             if (username == childData.name){
                 const uid = childSnapshot.key;
-                alert("Encontrado");
-                alert(uid);
+                //alert("Encontrado");
+                //alert(uid);
                 encontrado = true;
+                //Eliminar el dato con uid específico del usuario
                 remove(ref(db, 'Users/' + uid)).then(() => {
                     alert("Dato eliminado");
                 }).catch((error) =>{
