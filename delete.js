@@ -63,13 +63,13 @@ function delete_user(username){
     
     onValue(starCountRef, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
-            //const uid = childSnapshot.key;
             const childData = childSnapshot.val();
             //alert(childData.name);
             if (username == childData.name){
+                const uid = childSnapshot.key;
                 alert("Encontrado");
+                alert(uid);
                 encontrado = true;
-                //childData.rating.remove();
             }
         });
         if (encontrado == false) {
