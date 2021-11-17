@@ -36,16 +36,26 @@ function consultar(username, phone, email){
     const db = getDatabase();
     const starCountRef = ref(db, 'Users/');
 
+    const encontrado = new Boolean(false);
+
+    var encontrado = new Boolean(false);
+    
     onValue(starCountRef, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
-            const uid = childSnapshot.key;
             const childData = childSnapshot.val();
             //alert(childData.name);
-            
-
-
-
+            if (username == childData.name){
+                const uid = childSnapshot.key;
+                //alert("Encontrado");
+                //alert(uid);
+                encontrado = true;
+                
+                //...
+            }
         });
+        if (encontrado == false) {
+            alert("Usuario no encontrado o no existe en base de datos");
+        }
     }, {
         onlyOnce: true
     });
