@@ -72,8 +72,6 @@ function consultar(username, phone){
                 else
                     jobs_title = desc + desc + desc;
 
-                alert(jobs_title);
-
                 //Insertar los valores en la tabla
                 row.innerHTML += `
                     <td>${childSnapshot.key}</td>
