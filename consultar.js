@@ -25,13 +25,12 @@ $("#logoutButton").on("click", function(){
 $("#btn_consultar").on("click", function(){
     var username=$("#username").val();
     var phone=$('#phone').val();
-    var email=$('#email').val();
 
-    consultar(username);
+    consultar(username, phone);
 });
 
 //Funcion de consultar usuario
-function consultar(username, phone, email){
+function consultar(username, phone){
     
     const db = getDatabase();
     const starCountRef = ref(db, 'Users/');
@@ -44,13 +43,13 @@ function consultar(username, phone, email){
         snapshot.forEach((childSnapshot) => {
             const childData = childSnapshot.val();
             //alert(childData.name);
-            if (username == childData.name){
+            if (username == childData.name && phone == childData.phone){
                 const uid = childSnapshot.key;
                 //alert("Encontrado");
                 //alert(uid);
+                alert(childData.name);
                 encontrado = true;
                 
-                //...
             }
         });
         if (encontrado == false) {
