@@ -25,7 +25,7 @@ $("#logoutButton").on("click", function(){
 $("#btn_consultar").on("click", function(){
     var username=$("#username").val();
     var phone=$('#phone').val();
-
+    alert("Haz dado click");
     consultar(username, phone);
 });
 
