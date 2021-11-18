@@ -43,9 +43,16 @@ function consultar(username, phone){
             if (username == childData.name && phone == childData.phone){
                 const uid = childSnapshot.key;
                 //alert("Encontrado");
-                //alert(uid);
-                alert(childData.name);
+                //alert(childData.name);
                 encontrado = true;
+
+                const tabla = document.querySelector('#list_consulta tbody');
+                const row = document.createElement('tr');
+                row.innerHTML += `
+                    <td>${childData.name}</td>
+
+                `;
+                tabla.appendChild(row);
                 
             }
         });
