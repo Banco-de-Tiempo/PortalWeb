@@ -45,6 +45,19 @@ function consultar(username, phone){
                 //alert("Encontrado");
                 //alert(childData.name);
                 encontrado = true;
+                const tot_jobs = parseInt(childData.jobs.number);
+                var jobs_title = "";
+                var desc = "<td>${'No existe'}</td>";
+                for(var i=1; i<= tot_jobs; i++)
+                    jobs_title = jobs_title + '<td>${childData.jobs.T'+i+'.jobtitle}</td>';
+                if(tot_jobs == 1)
+                    jobs_title = jobs_title + desc + desc;
+                else if(tot_jobs == 2)
+                    jobs_title = jobs_title;
+                else
+                    jobs_title = desc + desc + desc;
+
+                alert(jobs_title);
 
                 const tabla = document.querySelector('#list_consulta tbody');
                 const row = document.createElement('tr');
@@ -53,9 +66,7 @@ function consultar(username, phone){
                     <td>${childData.name}</td>
                     <td>${childData.age}</td>
                     <td>${childData.phone}</td>
-                    <td>${childData.jobs.T1.jobtitle}</td>
-                    <td>${childData.jobs.T2.jobtitle}</td>
-                    <td>${childData.jobs.T3.jobtitle}</td>
+                ` + jobs_title + `
                     <td>${childData.balance}</td>
                     <td>${childData.rating}</td>
                 `;
