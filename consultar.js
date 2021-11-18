@@ -26,6 +26,7 @@ $("#btn_consultar").on("click", function(){
     var username=$("#username").val();
     var phone=$('#phone').val();
     alert("Haz dado click");
+    $("#list_consulta tbody").remove(); 
     consultar(username, phone);
 });
 
@@ -69,6 +70,8 @@ function consultar(username, phone){
                 ` + jobs_title + `
                     <td>${childData.balance}</td>
                     <td>${childData.rating}</td>
+                    <td>${childData.status}</td>
+                    <td>${childData.totjobs}</td>
                 `;
                 tabla.appendChild(row);
                 
