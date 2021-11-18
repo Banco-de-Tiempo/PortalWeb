@@ -35,8 +35,6 @@ function consultar(username, phone){
     const db = getDatabase();
     const starCountRef = ref(db, 'Users/');
 
-    const encontrado = new Boolean(false);
-
     var encontrado = new Boolean(false);
     
     onValue(starCountRef, (snapshot) => {
