@@ -49,8 +49,14 @@ function consultar(username, phone){
                 const tabla = document.querySelector('#list_consulta tbody');
                 const row = document.createElement('tr');
                 row.innerHTML += `
+                    <td>${childSnapshot.key}</td>
                     <td>${childData.name}</td>
-
+                    <td>${childData.age}</td>
+                    <td>${childData.phone}</td>
+                    <td>${childData.jobs.T1.jobtitle}</td>
+                    <td>${childData.jobs.T2.jobtitle}</td>
+                    <td>${childData.jobs.T3.jobtitle}</td>
+                    
                 `;
                 tabla.appendChild(row);
                 
