@@ -56,7 +56,8 @@ function consultar(username, phone){
                     <td>${childData.jobs.T1.jobtitle}</td>
                     <td>${childData.jobs.T2.jobtitle}</td>
                     <td>${childData.jobs.T3.jobtitle}</td>
-                    
+                    <td>${childData.balance}</td>
+                    <td>${childData.rating}</td>
                 `;
                 tabla.appendChild(row);
                 
