@@ -31,7 +31,6 @@ $("#btn_consultar").on("click", function(){
 
 //Funcion de consultar usuario
 function consultar(username, phone){
-    
     const db = getDatabase();
     const starCountRef = ref(db, 'Users/');
 
