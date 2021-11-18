@@ -26,9 +26,12 @@ $("#btn_consultar").on("click", function(){
     var username=$("#username").val();
     var phone=$('#phone').val();
     alert("Haz dado click");
-    $("#list_consulta tbody").remove(); 
+    //$("#list_consulta tbody").remove(); 
     consultar(username, phone);
 });
+
+const tabla = document.querySelector('#list_consulta tbody');
+const row = document.createElement('tr');
 
 //Funcion de consultar usuario
 function consultar(username, phone){
@@ -36,6 +39,8 @@ function consultar(username, phone){
     const starCountRef = ref(db, 'Users/');
 
     var encontrado = new Boolean(false);
+
+    row.innerHTML = "";
     
     onValue(starCountRef, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
@@ -46,22 +51,21 @@ function consultar(username, phone){
                 //alert("Encontrado");
                 //alert(childData.name);
                 encontrado = true;
+                
                 const tot_jobs = parseInt(childData.jobs.number);
                 var jobs_title = "";
-                var desc = "<td>${'No existe'}</td>";
+                var desc = "<td>No existe</td>";
                 for(var i=1; i<= tot_jobs; i++)
                     jobs_title = jobs_title + '<td>${childData.jobs.T'+i+'.jobtitle}</td>';
                 if(tot_jobs == 1)
                     jobs_title = jobs_title + desc + desc;
                 else if(tot_jobs == 2)
-                    jobs_title = jobs_title;
+                    jobs_title = jobs_title + desc;
                 else
                     jobs_title = desc + desc + desc;
 
                 alert(jobs_title);
 
-                const tabla = document.querySelector('#list_consulta tbody');
-                const row = document.createElement('tr');
                 row.innerHTML += `
                     <td>${childSnapshot.key}</td>
                     <td>${childData.name}</td>
