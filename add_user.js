@@ -52,7 +52,7 @@ $("#btn_add_user").on("click", function(){
     if($('#domingo').is(':checked')){ datejob = datejob + "D "; }
 
     var horas=$('#selectHoras').val();
-    alert(horas);
+    //alert(horas);
 
     var pass=$("#pass").val();
     var confirm_pass=$("#confirm_pass").val();
