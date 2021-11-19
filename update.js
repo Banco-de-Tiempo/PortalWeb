@@ -22,7 +22,8 @@ $("#logoutButton").on("click", function(){
     singout();
 });
 
-$("#update_user").on("click", function(){
+$("#btn_update_user").on("click", function(){
+    alert("Has dado click");
     var username=$("#username").val();
     var phone=$('#phone').val();
     var address=$('#address').val();
@@ -117,7 +118,7 @@ function update_user(username, phone, address, age, pronoun, job1, jobdesc1, dat
     const starCountRef = ref(db, 'Users/');
 
     var encontrado = new Boolean(false);
-    
+    alert("Ya entraste a la función");
     //Iniciar la busqueda por nombre
     onValue(starCountRef, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
