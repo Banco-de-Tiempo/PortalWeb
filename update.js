@@ -81,7 +81,7 @@ $("#update_user").on("click", function(){
 
     var horas3=$('#select3').val();
 
-    register_user(username, phone, address, age, pronoun, job1, jobdesc1, datejob1, horas1, job2, jobdesc2, datejob2, horas2, job3, jobdesc3, datejob3, horas3);
+    update_user(username, phone, address, age, pronoun, job1, jobdesc1, datejob1, horas1, job2, jobdesc2, datejob2, horas2, job3, jobdesc3, datejob3, horas3);
     
 });
 
