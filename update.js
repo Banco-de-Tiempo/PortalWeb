@@ -39,6 +39,7 @@ $("#btn_update_user").on("click", function(){
 
     var pronoun=$('#pronoun').val();
 
+    //Trabajo 1
     var job1=$('#job1').val();
     var jobdesc1=$('#jobdesc1').val();
     var datejob1 = "";
@@ -53,6 +54,7 @@ $("#btn_update_user").on("click", function(){
 
     var horas1=$('#select1').val();
 
+    //Trabajo 2
     var job2=$('#job2').val();
     var jobdesc2=$('#jobdesc2').val();
     var datejob2 = "";
@@ -67,6 +69,7 @@ $("#btn_update_user").on("click", function(){
 
     var horas2=$('#select2').val();
 
+    //Trabajo 3
     var job3=$('#job3').val();
     var jobdesc3=$('#jobdesc3').val();
     var datejob3 = "";
@@ -80,7 +83,7 @@ $("#btn_update_user").on("click", function(){
     if($('#domingo3').is(':checked')){ datejob3 = datejob3 + "D "; }
 
     var horas3=$('#select3').val();
-
+    
     update_user(username, phone, address, age, pronoun, job1, jobdesc1, datejob1, horas1, job2, jobdesc2, datejob2, horas2, job3, jobdesc3, datejob3, horas3);
     
 });
@@ -128,6 +131,8 @@ function update_user(username, phone, address, age, pronoun, job1, jobdesc1, dat
                 const uid = childSnapshot.key;
                 //alert(uid);
                 encontrado = true;
+
+                //Tomar los datos insertados y actualizar en base de datos
                 set(ref(db, 'Users/' + uid),{
                     name: username,
                     role: "user",
