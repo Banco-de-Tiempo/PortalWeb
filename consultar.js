@@ -68,14 +68,7 @@ function consultar(username, phone){
                 } catch {
                     var job3 = "No existe";
                 }
-                //Convertir número de trabajo a integer
-                //const tot_jobs = parseInt(childData.jobs.number);
-                //var jobs_title = "";
-
-                //Mensaje de no existe
-                //var desc = "No existe";
-
-                //Concatenar los nombre de trabajo a un variable
+                
                 row.innerHTML += `
                     <td>${childSnapshot.key}</td>
                     <td>${childData.name}</td>

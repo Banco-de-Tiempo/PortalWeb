@@ -23,13 +23,15 @@ $("#logoutButton").on("click", function(){
 });
 
 $("#btn_consultar").on("click", function(){
-    var status=$('#select')
+    var status=$('#select').val();
+    console.log(status);
     consultar_status(status);
 });
 
 //Preparar las condiciones para mostrar los datos en la tabla
 const tabla = document.querySelector('#list_consulta_estatus tbody');
-const row = document.createElement('tr');
+const row = document.createElement('<tr>');
+const rowfin = document.createElement('</tr>');
 
 //Funcion de consultar usuario
 function consultar_status(status){
@@ -66,14 +68,7 @@ function consultar_status(status){
                 } catch {
                     var job3 = "No existe";
                 }
-                //Convertir número de trabajo a integer
-                //const tot_jobs = parseInt(childData.jobs.number);
-                //var jobs_title = "";
 
-                //Mensaje de no existe
-                //var desc = "No existe";
-
-                //Concatenar los nombre de trabajo a un variable
                 row.innerHTML += `
                     <td>${childSnapshot.key}</td>
                     <td>${childData.name}</td>
@@ -87,8 +82,10 @@ function consultar_status(status){
                     <td>${childData.status}</td>
                     <td>${childData.totjobs}</td>
                 `;
+                
                 //Mostrarlo en la tabla
                 tabla.appendChild(row);
+
             }
         });
         if (encontrado == false) {
