@@ -53,6 +53,21 @@ function consultar(username, phone){
                 //alert(childData.name);
                 encontrado = true;
 
+                try {
+                    var job1 = childData.jobs.T1.jobtitle;
+                } catch {
+                    var job1 = "No existe";
+                }
+                try {
+                    var job2 = childData.jobs.T2.jobtitle;
+                } catch {
+                    var job2 = "No existe";
+                }
+                try {
+                    var job3 = childData.jobs.T3.jobtitle;
+                } catch {
+                    var job3 = "No existe";
+                }
                 //Convertir número de trabajo a integer
                 //const tot_jobs = parseInt(childData.jobs.number);
                 //var jobs_title = "";
@@ -66,9 +81,9 @@ function consultar(username, phone){
                     <td>${childData.name}</td>
                     <td>${childData.age}</td>
                     <td>${childData.phone}</td>
-                    <td>${childData.jobs.T1.jobtitle}</td>
-                    <td>${childData.jobs.T2.jobtitle}</td>
-                    <td>${childData.jobs.T3.jobtitle}</td>
+                    <td>${job1}</td>
+                    <td>${job2}</td>
+                    <td>${job3}</td>
                     <td>${childData.balance}</td>
                     <td>${childData.rating}</td>
                     <td>${childData.status}</td>

@@ -112,6 +112,7 @@ function register_user(username, email, password, phone, address, age, pronoun, 
             status: "No verificado",
             rating: "0",
             totjobs: "0",
+            balance: "0",
             jobs: {
                 T1: {
                     jobtitle: job,
