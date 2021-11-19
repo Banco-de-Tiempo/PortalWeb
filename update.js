@@ -22,9 +22,8 @@ $("#logoutButton").on("click", function(){
     singout();
 });
 
-$("#btn_add_user").on("click", function(){
+$("#update_user").on("click", function(){
     var username=$("#username").val();
-    var email=$("#email").val();
     var phone=$('#phone').val();
     var address=$('#address').val();
 
@@ -39,26 +38,51 @@ $("#btn_add_user").on("click", function(){
     }
 
     var pronoun=$('#pronoun').val();
-    var job=$('#job').val();
-    var jobdesc=$('#jobdesc').val();
-    var datejob = "";
 
-    if($('#lunes').is(':checked')){ datejob = datejob + "L "; }
-    if($('#martes').is(':checked')){ datejob = datejob + "M "; }
-    if($('#miercoles').is(':checked')){ datejob = datejob + "X "; }
-    if($('#jueves').is(':checked')){ datejob = datejob + "J "; }
-    if($('#viernes').is(':checked')){ datejob = datejob + "V "; }
-    if($('#sabado').is(':checked')){ datejob = datejob + "S "; }
-    if($('#domingo').is(':checked')){ datejob = datejob + "D "; }
+    var job1=$('#job1').val();
+    var jobdesc1=$('#jobdesc1').val();
+    var datejob1 = "";
 
-    var pass=$("#pass").val();
-    var confirm_pass=$("#confirm_pass").val();
-    if(pass != confirm_pass){
-        alert("Contraseñas distintas");
-    }
-    else{
-        register_user(username, email, pass, phone, address, age, pronoun, job, jobdesc, datejob);
-    }
+    if($('#lunes1').is(':checked')){ datejob1 = datejob1 + "L "; }
+    if($('#martes1').is(':checked')){ datejob1 = datejob1 + "M "; }
+    if($('#miercoles1').is(':checked')){ datejob1 = datejob1 + "X "; }
+    if($('#jueves1').is(':checked')){ datejob1 = datejob1 + "J "; }
+    if($('#viernes1').is(':checked')){ datejob1 = datejob1 + "V "; }
+    if($('#sabado1').is(':checked')){ datejob1 = datejob1 + "S "; }
+    if($('#domingo1').is(':checked')){ datejob1 = datejob1 + "D "; }
+
+    var horas1=$('#select1').val();
+
+    var job2=$('#job2').val();
+    var jobdesc2=$('#jobdesc2').val();
+    var datejob2 = "";
+
+    if($('#lunes2').is(':checked')){ datejob2 = datejob2 + "L "; }
+    if($('#martes2').is(':checked')){ datejob2 = datejob2 + "M "; }
+    if($('#miercoles2').is(':checked')){ datejob2 = datejob2 + "X "; }
+    if($('#jueves2').is(':checked')){ datejob2 = datejob2 + "J "; }
+    if($('#viernes2').is(':checked')){ datejob2 = datejob2 + "V "; }
+    if($('#sabado2').is(':checked')){ datejob2 = datejob2 + "S "; }
+    if($('#domingo2').is(':checked')){ datejob2 = datejob2 + "D "; }
+
+    var horas2=$('#select2').val();
+
+    var job3=$('#job3').val();
+    var jobdesc3=$('#jobdesc3').val();
+    var datejob3 = "";
+
+    if($('#lunes3').is(':checked')){ datejob3 = datejob3 + "L "; }
+    if($('#martes3').is(':checked')){ datejob3 = datejob3 + "M "; }
+    if($('#miercoles3').is(':checked')){ datejob3 = datejob3 + "X "; }
+    if($('#jueves3').is(':checked')){ datejob3 = datejob3 + "J "; }
+    if($('#viernes3').is(':checked')){ datejob3 = datejob3 + "V "; }
+    if($('#sabado3').is(':checked')){ datejob3 = datejob3 + "S "; }
+    if($('#domingo3').is(':checked')){ datejob3 = datejob3 + "D "; }
+
+    var horas3=$('#select3').val();
+
+    register_user(username, phone, address, age, pronoun, job1, jobdesc1, datejob1, horas1, job2, jobdesc2, datejob2, horas2, job3, jobdesc3, datejob3, horas3);
+    
 });
 
 //Función para salir de la sesión
@@ -88,6 +112,58 @@ function checkauth(){
     });
 }
 
-function update_user(username, email, password, phone, address, age, pronoun, job, jobdesc, datejob){
+function update_user(username, phone, address, age, pronoun, job1, jobdesc1, datejob1, horas1, job2, jobdesc2, datejob2, horas2, job3, jobdesc3, datejob3, horas3){
+    const db = getDatabase();
+    const starCountRef = ref(db, 'Users/');
+
+    var encontrado = new Boolean(false);
     
+    //Iniciar la busqueda por nombre
+    onValue(starCountRef, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+            const childData = childSnapshot.val();
+            //alert(childData.name);
+            //Buscar el usuario con el nombre y el número telefono
+            if (username == childData.name){
+                const uid = childSnapshot.key;
+                alert(uid);
+                encontrado = true;
+                set(ref(db, 'Users/' + uid),{
+                    name: username,
+                    role: "user",
+                    phone: phone,
+                    address: address,
+                    age: age,
+                    pronoun: pronoun,
+                    jobs: {
+                        T1: {
+                            jobtitle: job1,
+                            datejob: datejob1,
+                            jobdesc: jobdesc1,
+                            horas: horas1
+                        },
+                        T2: {
+                            jobtitle: job2,
+                            datejob: datejob2,
+                            jobdesc: jobdesc2,
+                            horas: horas2
+                        },
+                        T3: {
+                            jobtitle: job3,
+                            datejob: datejob3,
+                            jobdesc: jobdesc3,
+                            horas: horas3
+                        },
+                        number: "3"
+                    }
+                })
+                alert("Usuario actualizado exitosamente");
+            }
+        });
+        if (encontrado == false) {
+            alert("Usuario no encontrado o no existe en base de datos");
+        }
+    }, {
+        onlyOnce: true
+  });
 }
