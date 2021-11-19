@@ -24,6 +24,7 @@ $("#logoutButton").on("click", function(){
 
 $("#btn_search_job").on("click", function(){
     var job=$("#job").val();
+    alert(job);
     search_job(job);
 });
 
@@ -46,14 +47,15 @@ function search_job(job){
             const childData = childSnapshot.val();
             //alert(childData.name);
             //Buscar el usuario con el nombre y el número telefono
+            alert(childData.jobs.Ti.jobtitle);
             if (job == childData.jobs.T1.jobtitle || job == childData.jobs.T3.jobtitle || job == childData.jobs.T3.jobtitle){
                 
                 if(job == childData.jobs.T1.jobtitle)
-                    const job_title = job;
+                    var job_title = job;
                 else if(job == childData.jobs.T2.jobtitle)
-                    const job_title = job;
+                    var job_title = job;
                 else if(job == childData.jobs.T3.jobtitle)
-                    const job_title = job;
+                    var job_title = job;
 
                 //alert("Encontrado");
                 //alert(childData.name);
