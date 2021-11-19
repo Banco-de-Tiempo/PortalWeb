@@ -54,31 +54,21 @@ function consultar(username, phone){
                 encontrado = true;
 
                 //Convertir número de trabajo a integer
-                const tot_jobs = parseInt(childData.jobs.number);
-                var jobs_title = "";
+                //const tot_jobs = parseInt(childData.jobs.number);
+                //var jobs_title = "";
 
                 //Mensaje de no existe
-                var desc = "<td>No existe</td>";
+                //var desc = "No existe";
 
                 //Concatenar los nombre de trabajo a un variable
-                for(var i=1; i<= tot_jobs; i++)
-                    jobs_title = jobs_title + '<td>${childData.jobs.T'+i+'.jobtitle}</td>';
-                if(tot_jobs == 1)
-                    jobs_title = jobs_title + desc + desc;
-                else if(tot_jobs == 2)
-                    jobs_title = jobs_title + desc;
-                else if(tot_jobs == 3)
-                    jobs_title = jobs_title;
-                else
-                    jobs_title = desc + desc + desc;
-
-                //Insertar los valores en la tabla
                 row.innerHTML += `
                     <td>${childSnapshot.key}</td>
                     <td>${childData.name}</td>
                     <td>${childData.age}</td>
                     <td>${childData.phone}</td>
-                ` + jobs_title + `
+                    <td>${childData.jobs.T1.jobtitle}</td>
+                    <td>${childData.jobs.T2.jobtitle}</td>
+                    <td>${childData.jobs.T3.jobtitle}</td>
                     <td>${childData.balance}</td>
                     <td>${childData.rating}</td>
                     <td>${childData.status}</td>
@@ -86,7 +76,6 @@ function consultar(username, phone){
                 `;
                 //Mostrarlo en la tabla
                 tabla.appendChild(row);
-                
             }
         });
         if (encontrado == false) {
