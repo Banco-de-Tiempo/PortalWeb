@@ -30,8 +30,7 @@ $("#btn_consultar").on("click", function(){
 
 //Preparar las condiciones para mostrar los datos en la tabla
 const tabla = document.querySelector('#list_consulta_estatus tbody');
-const row = document.createElement('<tr>');
-const rowfin = document.createElement('</tr>');
+const row = document.createElement('tr');
 
 //Funcion de consultar usuario
 function consultar_status(status){
