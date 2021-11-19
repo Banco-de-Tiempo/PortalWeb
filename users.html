@@ -2,18 +2,84 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title> Administracion de Usuarios</title>
+    <title>Consultar usuario</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <h1>Users</h1>
+    <nav class="navbar  navbar-dark  navbar-expand-lg" style="background-color:#002772">
+        <a class="navbar-brand" href="mainadminpage.html">
+        <img src="img/logo_banco_tiempo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+        Banco de Tiempo
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="mainadminpage.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="gestion_user.html">Gestión de usuario<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <button type="button" class="btn btn-outline-success" id="logoutButton">Cerrar sesión</button>
+        </div>
+      </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 textheader">
+          <h2 id="signinheader">Consultar usuarios por verificación</h2>
+        </div>
+
+        <div class="col-sm-12 adduser">
+          <select class="form-select" aria-label="Default select example" id="select">
+            <option selected>Estatus de verificación</option>
+            <option value="Verificado">Verificado</option>
+            <option value="No verificado">No verificado</option>
+          </select>
+        </div>
+
+        <div class="col-sm-12 adduser">
+            <button type="button" class="btn btn-outline-primary" id="btn_consultar">Aceptar</button>
+        </div>
+
+        <div class="col-sm-12 text-center">
+          <table class="table table-dark table-sm" id="list_consulta_estatus">
+            <thead>
+              <tr>
+                <th scope="col">UID del usuario</th>
+                <th scope="col">Nombre del usuario</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Trabajo 1</th>
+                <th scope="col">Trabajo 2</th>
+                <th scope="col">Trabajo 3</th>
+                <th scope="col">Horas</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Estatus</th>
+                <th scope="col">Total de trabajos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!--    -->
+            </tbody>
+          </table>
+        </div>
+
+
+
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="userslist.js" type="module"></script>
+    <script src="consultar.js" type="module"></script>
   </body>
 </html>
