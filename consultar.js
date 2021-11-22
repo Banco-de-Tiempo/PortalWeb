@@ -30,7 +30,6 @@ $("#btn_consultar").on("click", function(){
 
 //Preparar las condiciones para mostrar los datos en la tabla
 const tabla = document.querySelector('#list_consulta tbody');
-const row = document.createElement('tr');
 
 //Funcion de consultar usuario
 function consultar(username, phone){
@@ -40,7 +39,7 @@ function consultar(username, phone){
     var encontrado = new Boolean(false);
     
     //Vaciar la tabla
-    row.innerHTML = "";
+    tabla.innerHTML = "";
     //Iniciar la busqueda por nombre
     onValue(starCountRef, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
@@ -69,21 +68,23 @@ function consultar(username, phone){
                     var job3 = "No existe";
                 }
                 
-                row.innerHTML += `
-                    <td>${childSnapshot.key}</td>
-                    <td>${childData.name}</td>
-                    <td>${childData.age}</td>
-                    <td>${childData.phone}</td>
-                    <td>${job1}</td>
-                    <td>${job2}</td>
-                    <td>${job3}</td>
-                    <td>${childData.balance}</td>
-                    <td>${childData.rating}</td>
-                    <td>${childData.status}</td>
-                    <td>${childData.totjobs}</td>
+                var row = `<tr>
+                                <td>${childSnapshot.key}</td>
+                                <td>${childData.name}</td>
+                                <td>${childData.age}</td>
+                                <td>${childData.phone}</td>
+                                <td>${job1}</td>
+                                <td>${job2}</td>
+                                <td>${job3}</td>
+                                <td>${childData.balance}</td>
+                                <td>${childData.rating}</td>
+                                <td>${childData.status}</td>
+                                <td>${childData.totjobs}</td>
+                            </tr>
                 `;
+
                 //Mostrarlo en la tabla
-                tabla.appendChild(row);
+                tabla.innerHTML += row;
             }
         });
         if (encontrado == false) {

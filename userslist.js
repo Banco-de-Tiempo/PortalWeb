@@ -24,7 +24,6 @@ $("#logoutButton").on("click", function(){
 
 $("#btn_consultar").on("click", function(){
     var status=$('#select').val();
-    console.log(status);
     consultar_status(status);
 });
 
@@ -45,12 +44,13 @@ function consultar_status(status){
         snapshot.forEach((childSnapshot) => {
             const childData = childSnapshot.val();
             //alert(childData.name);
-            //Buscar el usuario con el nombre y el número telefono
+            //Buscar el usuario con el estatus de verificación
             if (status == childData.status){
                 const uid = childSnapshot.key;
                 //alert("Encontrado");
                 //alert(childData.name);
                 encontrado = true;
+                //Intentar si puede capturar todo los trabajos
                 try {
                     var job1 = childData.jobs.T1.jobtitle;
                 } catch {
@@ -66,7 +66,7 @@ function consultar_status(status){
                 } catch {
                     var job3 = "No existe";
                 }
-                
+                //Agregar los valores en la tabla
                 var row =  `<tr>
                                 <td>${childSnapshot.key}</td>
                                 <td>${childData.name}</td>
