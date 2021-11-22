@@ -133,7 +133,7 @@ function update_user(username, phone, address, age, pronoun, job1, jobdesc1, dat
                 encontrado = true;
 
                 //Tomar los datos insertados y actualizar en base de datos
-                set(ref(db, 'Users/' + uid),{
+                const postData = {
                     name: username,
                     role: "user",
                     phone: phone,
@@ -161,8 +161,18 @@ function update_user(username, phone, address, age, pronoun, job1, jobdesc1, dat
                         },
                         number: "3"
                     }
-                })
+                };
+                // Get a key for a new Post.
+                const newPostKey = push(child(ref(db), 'posts')).key;
+            
+                // Write the new post's data simultaneously in the posts list and the user's post list.
+                const updates = {};
+                updates['/posts/' + newPostKey] = postData;
+                updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+            
                 alert("Usuario actualizado exitosamente");
+                return update(ref(db), updates);
+                
             }
         });
         if (encontrado == false) {
