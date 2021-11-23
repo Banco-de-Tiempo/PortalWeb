@@ -140,6 +140,7 @@ function update_user(username, phone, address, age, pronoun, job1, jobdesc1, dat
                     address: address,
                     age: age,
                     pronoun: pronoun,
+                    status: "No verificado",
                     jobs: {
                         T1: {
                             jobtitle: job1,
@@ -162,13 +163,10 @@ function update_user(username, phone, address, age, pronoun, job1, jobdesc1, dat
                         number: "3"
                     }
                 };
-                // Get a key for a new Post.
-                const newPostKey = push(child(ref(db), 'posts')).key;
-            
+                
                 // Write the new post's data simultaneously in the posts list and the user's post list.
                 const updates = {};
-                updates['/posts/' + newPostKey] = postData;
-                updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+                updates['/Users/' + uid] = postData;
             
                 alert("Usuario actualizado exitosamente");
                 return update(ref(db), updates);
