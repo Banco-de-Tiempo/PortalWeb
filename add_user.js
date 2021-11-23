@@ -51,7 +51,6 @@ $("#btn_add_user").on("click", function(){
     if($('#sabado').is(':checked')){ datejob = datejob + "S "; }
     if($('#domingo').is(':checked')){ datejob = datejob + "D "; }
 
-    var horas=$('#selectHoras').val();
     //alert(horas);
 
     var pass=$("#pass").val();
@@ -60,7 +59,7 @@ $("#btn_add_user").on("click", function(){
         alert("Contraseñas distintas");
     }
     else{
-        register_user(username, email, pass, phone, address, age, pronoun, job, jobdesc, datejob, horas);
+        register_user(username, email, pass, phone, address, age, pronoun, job, jobdesc, datejob);
     }
 });
 
@@ -91,7 +90,7 @@ function checkauth(){
     });
 }
 
-function register_user(username, email, password, phone, address, age, pronoun, job, jobdesc, datejob, horas){
+function register_user(username, email, password, phone, address, age, pronoun, job, jobdesc, datejob){
     const auth = getAuth();
     const db = getDatabase();
     //Registrar administrador en database
@@ -118,7 +117,7 @@ function register_user(username, email, password, phone, address, age, pronoun, 
                     jobtitle: job,
                     datejob: datejob,
                     jobdesc: jobdesc,
-                    horas: horas
+                    horas: "1"
                 },
                 number: "1"
             }
