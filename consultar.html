@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
+    <!--Empieza navbar-->
     <nav class="navbar  navbar-dark  navbar-expand-lg" style="background-color:#002772">
         <a class="navbar-brand" href="mainadminpage.html">
         <img src="img/logo_banco_tiempo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
@@ -30,16 +31,18 @@
           <button type="button" class="btn btn-outline-success" id="logoutButton">Cerrar sesión</button>
         </div>
       </nav>
+      <!--Termina navbar-->
 
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12 textheader">
-          <h2 id="signinheader">Consultar usuario</h2>
-        </div>
 
-        <div class="col-sm-12">
-          <div class="input-group mb-3 flex-nowrap adduser">
-            <div class="input-group w-25">
+
+          <h2 id="signinheader">Consultar usuario</h2>
+          <br><br>
+
+
+
+          <div class="input-group mb-3 flex-nowrap ">
+            <div class="input-group w-25 align">
               <span class="input-group-text" id="basic-addon1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                   <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -49,11 +52,11 @@
               <input id="username" type="text" class="form-control" placeholder="Nombre completo" aria-label="Username" aria-describedby="addon-wrapping">
             </div>
           </div>
-        </div>
 
-        <div class="col-sm-12">
-            <div class="input-group mb-3 flex-nowrap adduser">
-              <div class="input-group w-25">
+
+
+            <div class="input-group mb-3 flex-nowrap ">
+              <div class="input-group w-25 align">
                 <span class="input-group-text" id="basic-addon1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
                         <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/>
@@ -63,13 +66,14 @@
                 <input id="phone" type="tel" class="form-control" placeholder="Número telefónico" aria-label="Phone" aria-describedby="addon-wrapping">
               </div>
             </div>
-        </div>
 
-        <div class="col-sm-12 adduser">
-            <button type="button" class="btn btn-outline-primary" id="btn_consultar">Aceptar</button>
-        </div>
 
-        <div class="col-sm-12 text-center">
+
+            <button type="button" class="btn btn-outline-primary button align" id="btn_consultar">Aceptar</button>
+            <br><br><br><br>
+
+
+
           <table class="table table-dark table-sm" id="list_consulta">
             <thead>
               <tr>
@@ -90,7 +94,7 @@
               <!--    -->
             </tbody>
           </table>
-        </div>
+
 
 
 

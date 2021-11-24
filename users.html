@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
+    <!---Navbar start here-->
     <nav class="navbar  navbar-dark  navbar-expand-lg" style="background-color:#002772">
         <a class="navbar-brand" href="mainadminpage.html">
         <img src="img/logo_banco_tiempo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
@@ -30,26 +31,31 @@
           <button type="button" class="btn btn-outline-success" id="logoutButton">Cerrar sesión</button>
         </div>
       </nav>
+      <!--Navbar ends here-->
 
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12 textheader">
-          <h2 id="signinheader">Consultar usuarios por verificación</h2>
-        </div>
 
-        <div class="col-sm-12 adduser">
-          <select class="form-select" aria-label="Default select example" id="select">
-            <option selected>Estatus de verificación</option>
-            <option value="Verificado">Verificado</option>
-            <option value="No verificado">No verificado</option>
-          </select>
-        </div>
 
-        <div class="col-sm-12 adduser">
-            <button type="button" class="btn btn-outline-primary" id="btn_consultar">Aceptar</button>
-        </div>
+          <h2 class="align" id="signinheader">Consultar usuarios por verificación</h2>
+          <br><br>
 
-        <div class="col-sm-12 text-center">
+
+          <div class="align">
+            <select class="form-select" aria-label="Default select example" id="select">
+              <option selected>Estatus de verificación</option>
+              <option value="Verificado">Verificado</option>
+              <option value="No verificado">No verificado</option>
+            </select>
+          </div>
+          <br>
+
+
+
+
+            <button type="button" class="btn btn-outline-primary button align" id="btn_consultar">Aceptar</button>
+
+
+          <br>
           <table class="table table-dark table-sm" id="list_consulta_estatus">
             <thead>
               <tr>
@@ -70,7 +76,7 @@
               <!--    -->
             </tbody>
           </table>
-        </div>
+
 
 
 
