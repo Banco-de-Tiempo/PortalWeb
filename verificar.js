@@ -17,17 +17,23 @@ const app = initializeApp(firebaseConfig);
 
 //Revisar si esta ingresado
 checkauth();
-check_status();
+//check_status();
 //Función de verificar () &&&&&&&&&&&&&&&&&&&&&&&
 
 $("#logoutButton").on("click", function(){
     singout();
 });
 
+$("#btn_verArch").on("click", function(){
+    verArch();
+});
+
+
 //Preparar las condiciones para mostrar los datos en la tabla
 const tabla = document.querySelector('#list_verificar tbody');
 
 //Funcion de ver las personas no verificadas
+/*
 function check_status(){
     const db = getDatabase();
     const starCountRef = ref(db, 'Users/');
@@ -72,6 +78,13 @@ function check_status(){
         onlyOnce: true
     });
 }
+*/
+
+//Función para ver archivo
+function verArch(){
+    alert("Haz dado click ");
+}
+
 
 
 //Función para salir de la sesión
