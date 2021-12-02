@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
 import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
+import {storage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBoPSDdPBSj7IZbIHKc4yfBTszKkfUWwxE",
@@ -83,6 +84,17 @@ function check_status(){
 //Función para ver archivo
 function verArch(){
     alert("Haz dado click ");
+
+    const storage = storage();
+    var pathRef = ref("verificacion/logo_banco_tiempo.png");
+    pathRef.getDownloadURL().then(function(url) {
+        alert(url);
+    }).catch((error) => {
+        alert("Error capturar la imagen");
+    });
+
+
+
 }
 
 
