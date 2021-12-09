@@ -125,7 +125,8 @@ function update_user(username, phone, address, age, pronoun, job1, jobdesc1, dat
                 const uid = childSnapshot.key;
                 //alert(uid);
                 encontrado = true;
-
+                
+                /*
                 //Tomar los datos insertados y actualizar en base de datos
                 const postData = {
                     name: username,
@@ -164,6 +165,45 @@ function update_user(username, phone, address, age, pronoun, job1, jobdesc1, dat
             
                 alert("Usuario actualizado exitosamente");
                 return update(ref(db), updates);
+                */
+
+                update(ref(db, "Users/" + uid), {
+                    name: username,
+                    role: "user",
+                    phone: phone,
+                    address: address,
+                    age: age,
+                    pronoun: pronoun,
+                    status: "No verificado",
+                    jobs: {
+                        T1: {
+                            jobtitle: job1,
+                            datejob: datejob1,
+                            jobdesc: jobdesc1,
+                            horas: "1"
+                        },
+                        T2: {
+                            jobtitle: job2,
+                            datejob: datejob2,
+                            jobdesc: jobdesc2,
+                            horas: "1"
+                        },
+                        T3: {
+                            jobtitle: job3,
+                            datejob: datejob3,
+                            jobdesc: jobdesc3,
+                            horas: "1"
+                        },
+                        number: "3"
+                    }
+                }).then(() => {
+                    alert("Usuario actualizado exitosamente");
+                }).catch((error) => {
+                    alert("Error al actualizar el usuario");
+                    alert(error);
+                });
+
+
             }
         });
         if (encontrado == false) {
