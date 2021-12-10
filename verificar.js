@@ -84,7 +84,7 @@ function verArch(){
     console.log(variable);
     $(".btn_verificar").click( function(event){
         console.log("Has dado click 1");
-        console.log(event.val);
+        console.log(event);
     });
 }
 
