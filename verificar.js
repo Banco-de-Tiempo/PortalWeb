@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
+import { getDatabase, ref, update, onValue } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
 const firebaseConfig = {
@@ -57,13 +57,13 @@ function check_status(){
                                 <td>${childData.name}</td>
                                 <td>${childData.age}</td>
                                 <td>${childData.phone}</td>
-                                <td><a href="${childData.documentos.ine_f}">Ver Img</a></td>
-                                <td><a href="${childData.documentos.ine_b}">Ver Img</a></td>
-                                <td><a href="${childData.documentos.antecedentes_np}">Ver Img</a></td>
-                                <td><a href="${childData.documentos.c_domicilio}">Ver Img</a></td>
+                                <td><a href="${childData.documentos.ine_f}">Ver Imágen</a></td>
+                                <td><a href="${childData.documentos.ine_b}">Ver Imágen</a></td>
+                                <td><a href="${childData.documentos.antecedentes_np}">Ver Imágen</a></td>
+                                <td><a href="${childData.documentos.c_domicilio}">Ver Imágen</a></td>
 
 
-                                <td><button value='${childSnapshot.key}' class='btn_verificar' type='button'>Ver archivos</button><td>
+                                <td><button value='${childSnapshot.key}' class='btn_verificar' type='button'>Aceptar</button><td>
                                 
                             </tr>
                             
@@ -82,24 +82,35 @@ function check_status(){
     }, {
         onlyOnce: true
     });
+    alert("Favor espere unos segundos");
 }
 
 function verArch(){
-    alert("Delay");
+    alert("Listo, ya puede verificar");
     var variable = document.querySelectorAll(".btn_verificar");
     console.log(variable);
     $(".btn_verificar").click( function(event){
         //console.log(event.currentTarget.attributes.value.value);
-        window.open("doc.html");
-
-
-
+        const uid = event.currentTarget.attributes.value.value;
+        update_check(uid);
     });
 }
 
 setTimeout(verArch, 20000);
 
+function update_check(uid){
+    const db = getDatabase();
 
+    update(ref(db, "Users/" + uid), {
+        status: "Verificado"
+    }).then(() => {
+        alert("Usuario verificado exitosamente");
+    }).catch((error) => {
+        alert("Error al verificar el usuario");
+        alert(error);
+    });
+
+}
 
 
 //Función para salir de la sesión
