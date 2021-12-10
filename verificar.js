@@ -22,15 +22,6 @@ $("#logoutButton").on("click", function(){
     singout();
 });
 
-
-
-
-$("#verificar").on("click", function(){
-    var variable = document.querySelectorAll(".btn_verificar");
-    console.log(variable);
-});
-
-
 //Preparar las condiciones para mostrar los datos en la tabla
 const tabla = document.querySelector('#list_verificar tbody');
 
@@ -94,14 +85,10 @@ function verArch(){
     alert("Delay");
     var variable = document.querySelectorAll(".btn_verificar");
     console.log(variable);
+    $(".btn_verificar").click( function(){
+        console.log("Has dado click 1");
+    });
 }
-
-/*
-$(".btn_verificar").click( function(){
-    console.log("Has dado click 1");
-    verArch();
-});
-*/
 
 setTimeout(verArch, 20000);
 
