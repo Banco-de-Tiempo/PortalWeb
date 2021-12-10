@@ -1,7 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
 import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
-import { storage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js"; //Importar firebase storage
 
 const firebaseConfig = {
     apiKey: "AIzaSyBoPSDdPBSj7IZbIHKc4yfBTszKkfUWwxE",
@@ -25,16 +24,13 @@ $("#logoutButton").on("click", function(){
     singout();
 });
 
-$("#btn_verArch").on("click", function(){
-    verArch();
-});
-
+check_status();
 
 //Preparar las condiciones para mostrar los datos en la tabla
 const tabla = document.querySelector('#list_verificar tbody');
 
 //Funcion de ver las personas no verificadas
-/*
+
 function check_status(){
     const db = getDatabase();
     const starCountRef = ref(db, 'Users/');
@@ -62,6 +58,7 @@ function check_status(){
                                 <td>${childData.name}</td>
                                 <td>${childData.age}</td>
                                 <td>${childData.phone}</td>
+                                <td><button>Ver archivo</button><td>
                                 
                             </tr>
                             
@@ -78,21 +75,6 @@ function check_status(){
     }, {
         onlyOnce: true
     });
-}
-*/
-
-//Función para ver archivo
-function verArch(){
-    alert("Haz dado click ");
-
-    const stor = storage();
-    var pathRef = stor.ref("verificacion/logo_banco_tiempo.png");
-    pathRef.getDownloadURL().then(function(url) {
-        alert(url);
-    }).catch((error) => {
-        alert("Error capturar la imagen");
-    });
-
 }
 
 
