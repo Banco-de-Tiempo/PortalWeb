@@ -61,7 +61,7 @@ function check_status(){
                                 <td>${childData.name}</td>
                                 <td>${childData.age}</td>
                                 <td>${childData.phone}</td>
-                                <td><button value='${childSnapshot.key}' class="btn_verificar">Ver archivos</button><td>
+                                <td><button value='${childSnapshot.key}' class='btn_verificar' type='button'>Ver archivos</button><td>
                                 
                             </tr>
                             
