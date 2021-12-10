@@ -81,7 +81,6 @@ function check_status(){
 }
 
 function verArch(){
-    alert("Has dado click");
     console.log("Has dado click");
 }
 
