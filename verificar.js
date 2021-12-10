@@ -100,7 +100,7 @@ function verArch(){
         const uid = event.currentTarget.attributes.value.value;
         //update_check(uid);
         let reason = prompt("Por favor ingrese la razón");
-        newKey(uid, reason);
+        newKey_rechazar(uid, reason);
 
     });
 }
@@ -126,7 +126,8 @@ function newKey(uid, reason) {
     const db = getDatabase();
     const postData = {
         job: reason,
-        status: 0
+        status: 0,
+        type: "verificationC"
       };
 
     const newPostKey = push(child(ref(db), "Users/" + uid + "notification/")).key;
@@ -138,6 +139,23 @@ function newKey(uid, reason) {
     return update(ref(db), updates);
 }
 
+
+function newKey_rechazar(uid, reason) {
+    const db = getDatabase();
+    const postData = {
+        job: reason,
+        status: 0,
+        type: "verificationF"
+      };
+
+    const newPostKey = push(child(ref(db), "Users/" + uid + "notification/")).key;
+
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    const updates = {};
+    updates["Users/" + uid + "/notification/" + newPostKey] = postData;
+
+    return update(ref(db), updates);
+}
 
 
 //Función para salir de la sesión
