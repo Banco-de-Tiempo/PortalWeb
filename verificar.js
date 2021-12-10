@@ -131,11 +131,11 @@ function newKey(uid, reason) {
         }
       };
 
-    const newPostKey = push(child(ref(db), "Users/" + uid + "notification")).key;
+    const newPostKey = push(child(ref(db), "Users/" + uid + "notification/")).key;
 
     // Write the new post's data simultaneously in the posts list and the user's post list.
     const updates = {};
-    updates["Users/" + uid + "notification" + newPostKey] = postData;
+    updates["Users/" + uid + "/notification/" + newPostKey] = postData;
 
     return update(ref(db), updates);
 }
