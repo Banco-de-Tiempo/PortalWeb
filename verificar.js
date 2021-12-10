@@ -122,7 +122,7 @@ function update_check(uid, reason){
 }
 
 function newKey(uid, reason) {
-
+    const db = getDatabase();
     const postData = {
         status: "Verificado",
         notification: {
