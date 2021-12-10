@@ -24,11 +24,12 @@ $("#logoutButton").on("click", function(){
 
 
 
-/*
+
 $("#verificar").on("click", function(){
-    
+    var variable = document.querySelectorAll(".btn_verificar");
+    console.log(variable);
 });
-*/
+
 
 //Preparar las condiciones para mostrar los datos en la tabla
 const tabla = document.querySelector('#list_verificar tbody');
