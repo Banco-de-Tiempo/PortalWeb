@@ -91,6 +91,7 @@ function check_status(){
 }
 
 function verArch(){
+    alert("Delay");
     console.log("Has dado click");
 }
 
@@ -101,6 +102,7 @@ $(".btn_verificar").click( function(){
 });
 */
 
+setTimeout(verArch, 2000);
 
 
 
