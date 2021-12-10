@@ -75,9 +75,14 @@ function check_status(){
         if (encontrado == false) {
             alert("Todos los usuarios están verificados");
         }
+
+    
     }, {
         onlyOnce: true
     });
+
+    var variable = document.querySelectorAll(".btn_verificar");
+    console.log(variable);
 }
 
 function verArch(){
@@ -90,8 +95,7 @@ $(".btn_verificar").click( function(){
     verArch();
 });
 */
-var variable = document.querySelectorAll(".btn_verificar");
-console.log(variable);
+
 
 
 
