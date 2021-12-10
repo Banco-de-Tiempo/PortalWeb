@@ -57,6 +57,12 @@ function check_status(){
                                 <td>${childData.name}</td>
                                 <td>${childData.age}</td>
                                 <td>${childData.phone}</td>
+                                <td><a href="${childData.documentos.ine_f}">Ver Img</a></td>
+                                <td><a href="${childData.documentos.ine_b}">Ver Img</a></td>
+                                <td><a href="${childData.documentos.antecedentes_np}">Ver Img</a></td>
+                                <td><a href="${childData.documentos.c_domicilio}">Ver Img</a></td>
+
+
                                 <td><button value='${childSnapshot.key}' class='btn_verificar' type='button'>Ver archivos</button><td>
                                 
                             </tr>
