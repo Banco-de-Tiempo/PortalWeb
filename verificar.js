@@ -17,14 +17,17 @@ const app = initializeApp(firebaseConfig);
 
 //Revisar si esta ingresado
 checkauth();
-//check_status();
 //Función de verificar () &&&&&&&&&&&&&&&&&&&&&&&
 
 $("#logoutButton").on("click", function(){
     singout();
 });
 
-check_status();
+$("#verificar").on("click", function(){
+    check_status();
+});
+
+
 
 //Preparar las condiciones para mostrar los datos en la tabla
 const tabla = document.querySelector('#list_verificar tbody');
