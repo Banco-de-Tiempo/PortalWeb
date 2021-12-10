@@ -85,8 +85,9 @@ function verArch(){
     alert("Delay");
     var variable = document.querySelectorAll(".btn_verificar");
     console.log(variable);
-    $(".btn_verificar").click( function(){
+    $(".btn_verificar").click( function(event){
         console.log("Has dado click 1");
+        console.log(event);
     });
 }
 
