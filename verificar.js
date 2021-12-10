@@ -62,8 +62,8 @@ function check_status(){
                                 <td><a href="${childData.documentos.antecedentes_np}">Ver Imágen</a></td>
                                 <td><a href="${childData.documentos.c_domicilio}">Ver Imágen</a></td>
 
-
                                 <td><button value='${childSnapshot.key}' class='btn_verificar' type='button'>Aceptar</button><td>
+                                <td><button value='${childSnapshot.key}' class='btn_verificar_rechazar' type='button'>Rechazar</button><td>
                                 
                             </tr>
                             
@@ -92,17 +92,28 @@ function verArch(){
     $(".btn_verificar").click( function(event){
         //console.log(event.currentTarget.attributes.value.value);
         const uid = event.currentTarget.attributes.value.value;
-        update_check(uid);
+        let reason = prompt("Por favor ingrese la razón");
+        alert(reason);
+        update_check(uid, reason);
+
+    });
+    $(".btn_verificar_rechazar").click( function(event){
+        //console.log(event.currentTarget.attributes.value.value);
+        //const uid = event.currentTarget.attributes.value.value;
+        //update_check(uid);
+        
+
     });
 }
 
 setTimeout(verArch, 20000);
 
-function update_check(uid){
+function update_check(uid, reason){
     const db = getDatabase();
+    newKey(uid, reason);
 
     update(ref(db, "Users/" + uid), {
-        status: "Verificado"
+        status: "Verificado",
     }).then(() => {
         alert("Usuario verificado exitosamente");
     }).catch((error) => {
@@ -111,6 +122,26 @@ function update_check(uid){
     });
 
 }
+
+function newKey(uid, reason) {
+
+    const postData = {
+        status: "Verificado",
+        notification: {
+            job: reason,
+            status: 0
+        }
+      };
+
+    const newPostKey = push(child(ref(db), "Users/" + uid + "notification")).key;
+
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    const updates = {};
+    updates["Users/" + uid + "notification" + newPostKey] = postData;
+
+    return update(ref(db), updates);
+}
+
 
 
 //Función para salir de la sesión
