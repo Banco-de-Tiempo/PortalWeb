@@ -61,7 +61,7 @@ function check_status(){
                                 <td>${childData.name}</td>
                                 <td>${childData.age}</td>
                                 <td>${childData.phone}</td>
-                                <td><button>Ver archivo</button><td>
+                                <td><button value='${childSnapshot.key}' onClick=${verArch()}>Ver archivo</button><td>
                                 
                             </tr>
                             
@@ -79,6 +79,13 @@ function check_status(){
         onlyOnce: true
     });
 }
+
+function verArch(){
+    alert("Has dado click");
+    console.log("Has dado click");
+}
+
+
 
 
 
