@@ -90,11 +90,8 @@ $(".btn_verificar").click( function(){
     verArch();
 });
 */
-
-
-for(var i=0;i<document.querySelectorAll(".btn_verificar").length;i++){
-    document.querySelectorAll(".btn_verificar")[i].addEventListener("click", verArch);//el primer parametro del eventlistener es que debe escuchar y el segundo es que debe hacer cuando se trigere la cosa
-}
+var variable = document.querySelectorAll(".btn_verificar");
+console.log(variable);
 
 
 
