@@ -133,7 +133,7 @@ function update_user(username, phone, address, age, pronoun, job1, jobdesc1, dat
                     address: address,
                     age: age,
                     pronoun: pronoun,
-                    status: "No verificado",
+                    status: "No Verificado",
                     jobs: {
                         T1: {
                             jobtitle: job1,
