@@ -25,6 +25,8 @@ $("#logoutButton").on("click", function(){
 
 $("#verificar").on("click", function(){
     check_status();
+    var variable = document.querySelectorAll(".btn_verificar");
+    console.log(variable);
 });
 
 
@@ -80,9 +82,6 @@ function check_status(){
     }, {
         onlyOnce: true
     });
-
-    var variable = document.querySelectorAll(".btn_verificar");
-    console.log(variable);
 }
 
 function verArch(){
