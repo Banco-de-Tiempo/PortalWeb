@@ -102,7 +102,7 @@ $(".btn_verificar").click( function(){
 });
 */
 
-setTimeout(verArch, 2000);
+setTimeout(verArch, 20000);
 
 
 
