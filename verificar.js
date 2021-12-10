@@ -61,7 +61,7 @@ function check_status(){
                                 <td>${childData.name}</td>
                                 <td>${childData.age}</td>
                                 <td>${childData.phone}</td>
-                                <td><button value='${childSnapshot.key}' class="btn_verificar">Ver archivo</button><td>
+                                <td><button value='${childSnapshot.key}' class="btn_verificar">Ver archivos</button><td>
                                 
                             </tr>
                             
@@ -85,7 +85,7 @@ function verArch(){
     console.log("Has dado click");
 }
 
-$("btn_verificar").on("click", function(){
+$(".btn_verificar").on("click", function(){
     verArch();
 });
 
