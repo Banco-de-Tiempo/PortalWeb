@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
-import { getDatabase, ref, update, onValue } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
+import { getDatabase, ref, update, onValue, push } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
 const firebaseConfig = {
@@ -93,7 +93,7 @@ function verArch(){
         //console.log(event.currentTarget.attributes.value.value);
         const uid = event.currentTarget.attributes.value.value;
         let reason = prompt("Por favor ingrese la razón");
-        alert(reason);
+        //alert(reason);
         update_check(uid, reason);
 
     });
