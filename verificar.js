@@ -124,18 +124,15 @@ function update_check(uid, reason){
 function newKey(uid, reason) {
     const db = getDatabase();
     const postData = {
-        status: "Verificado",
-        notification: {
-            job: reason,
-            status: 0
-        }
+        job: reason,
+        status: 0
       };
 
     const newPostKey = push(child(ref(db), "Users/" + uid + "notification/")).key;
 
     // Write the new post's data simultaneously in the posts list and the user's post list.
     const updates = {};
-    updates["Users/" + uid + "/notification/" + newPostKey];
+    updates["Users/" + uid + "/notification/" + newPostKey] = postData;
 
     return update(ref(db), updates);
 }
