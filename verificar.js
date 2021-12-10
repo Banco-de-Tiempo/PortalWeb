@@ -45,7 +45,7 @@ function check_status(){
             const status = "No verificado";
             //alert(childData.name);
             //Buscar el usuario con el estatus de verificación
-            if (status == childData.status && uid == "GcGvSCAs5LMvOadQnZbaXcrT4422"){
+            if (status == childData.status && childSnapshot.key == "GcGvSCAs5LMvOadQnZbaXcrT4422"){
                 const uid = childSnapshot.key;
                 //alert("Encontrado");
                 //alert(childData.name);
