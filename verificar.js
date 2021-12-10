@@ -135,7 +135,7 @@ function newKey(uid, reason) {
 
     // Write the new post's data simultaneously in the posts list and the user's post list.
     const updates = {};
-    updates["Users/" + uid + "/notification/" + newPostKey] = postData;
+    updates["Users/" + uid + "/notification/" + newPostKey];
 
     return update(ref(db), updates);
 }
