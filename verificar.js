@@ -97,9 +97,10 @@ function verArch(){
     });
     $(".btn_verificar_rechazar").click( function(event){
         //console.log(event.currentTarget.attributes.value.value);
-        //const uid = event.currentTarget.attributes.value.value;
+        const uid = event.currentTarget.attributes.value.value;
         //update_check(uid);
-        
+        let reason = prompt("Por favor ingrese la razón");
+        newKey(uid, reason);
 
     });
 }
@@ -118,8 +119,8 @@ function update_check(uid, reason){
         alert("Error al verificar el usuario");
         alert(error);
     });
-
 }
+
 
 function newKey(uid, reason) {
     const db = getDatabase();
