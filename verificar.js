@@ -92,7 +92,8 @@ function check_status(){
 
 function verArch(){
     alert("Delay");
-    console.log("Has dado click");
+    var variable = document.querySelectorAll(".btn_verificar");
+    console.log(variable);
 }
 
 /*
