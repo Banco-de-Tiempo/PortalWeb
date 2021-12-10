@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";//Importacion firebase
-import { getDatabase, ref, update, onValue, push } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
+import { getDatabase, ref, update, onValue, push, child } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js";//impotacion modulo realtimedatabse
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";//importacion firebase auth
 
 const firebaseConfig = {
@@ -66,9 +66,7 @@ function check_status(){
                                 <td><button value='${childSnapshot.key}' class='btn_verificar_rechazar' type='button'>Rechazar</button><td>
                                 
                             </tr>
-                            
                 `;
-                //4 de 9 columnas, falta documentos 
                 
                 //Mostrarlo en la tabla
                 tabla.innerHTML += row;
