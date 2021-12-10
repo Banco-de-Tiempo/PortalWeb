@@ -76,9 +76,6 @@ function check_status(){
     }, {
         onlyOnce: true
     });
-
-    var variable = document.querySelectorAll(".btn_verificar");
-    console.log(variable);
 }
 
 function verArch(){
@@ -87,7 +84,7 @@ function verArch(){
     console.log(variable);
     $(".btn_verificar").click( function(event){
         console.log("Has dado click 1");
-        console.log(event);
+        console.log(event.val);
     });
 }
 
