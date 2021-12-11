@@ -42,7 +42,7 @@ function check_status(){
     onValue(starCountRef, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
             const childData = childSnapshot.val();
-            const status = "No verificado";
+            const status = "No Verificado";
             //alert(childData.name);
             //Buscar el usuario con el estatus de verificación
             if (status == childData.status){
