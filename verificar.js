@@ -57,10 +57,10 @@ function check_status(){
                                 <td>${childData.name}</td>
                                 <td>${childData.age}</td>
                                 <td>${childData.phone}</td>
-                                <td><a href="${childData.documentos.ine_f}">Ver Imágen</a></td>
-                                <td><a href="${childData.documentos.ine_b}">Ver Imágen</a></td>
-                                <td><a href="${childData.documentos.antecedentes_np}">Ver Imágen</a></td>
-                                <td><a href="${childData.documentos.c_domicilio}">Ver Imágen</a></td>
+                                <td><a href="${childData.documentos.ine_f}" target="_blank" rel="noopener nonereferrer">Ver Imágen</a></td>
+                                <td><a href="${childData.documentos.ine_b}" target="_blank" rel="noopener nonereferrer">Ver Imágen</a></td>
+                                <td><a href="${childData.documentos.antecedentes_np}" target="_blank" rel="noopener nonereferrer">Ver Imágen</a></td>
+                                <td><a href="${childData.documentos.c_domicilio}" target="_blank" rel="noopener nonereferrer">Ver Imágen</a></td>
 
                                 <td><button value='${childSnapshot.key}' class='btn_verificar' type='button'>Aceptar</button><td>
                                 <td><button value='${childSnapshot.key}' class='btn_verificar_rechazar' type='button'>Rechazar</button><td>
