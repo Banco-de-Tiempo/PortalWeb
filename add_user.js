@@ -120,6 +120,12 @@ function register_user(username, email, password, phone, address, age, pronoun, 
                     horas: "1"
                 },
                 number: "1"
+            },
+            documento: {
+                antecedentes_np: " ",
+                c_domicilio: " ",
+                ine_b: " ",
+                ine_f: " "
             }
         })
         alert("Usuario registrado exitosamente");
