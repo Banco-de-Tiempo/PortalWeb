@@ -121,7 +121,7 @@ function register_user(username, email, password, phone, address, age, pronoun, 
                 },
                 number: "1"
             },
-            documento: {
+            documentos: {
                 antecedentes_np: " ",
                 c_domicilio: " ",
                 ine_b: " ",
