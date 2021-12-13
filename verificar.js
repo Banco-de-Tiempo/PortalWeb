@@ -105,7 +105,7 @@ function verArch(){
     });
 }
 
-setTimeout(verArch, 20000);
+setTimeout(verArch, 10000);
 
 function update_check(uid, reason){
     const db = getDatabase();

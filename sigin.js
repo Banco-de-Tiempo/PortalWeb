@@ -43,7 +43,7 @@ function login(email,password){
           if (role == 'admin'){
             //Redirigir a la página de inicio
             alert("Bienvenido admin");
-            window.location.replace("mainadminpage.html");
+            window.location.replace("gestion_user.html");
           } else {
             alert("No eres admin");
           }
