@@ -91,8 +91,9 @@ function verArch(){
         const uid = event.currentTarget.attributes.value.value;
         let reason = prompt("Por favor ingrese la razón", "Cuenta con todo los documentos correctos.");
         //alert(reason);
-        if(reason) {
+        if (reason) {
             update_check(uid, reason);
+            alert("Recargando la página");
             location.reload();
         } else {
             alert("Cancelaste la acción");
