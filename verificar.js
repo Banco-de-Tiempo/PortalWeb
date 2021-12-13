@@ -83,28 +83,35 @@ function check_status(){
     alert("Cargando los datos, favor de esperar unos segundos");
 }
 
+setTimeout(verArch, 5000);
+
 function verArch(){
-    var variable = document.querySelectorAll(".btn_verificar");
-    console.log(variable);
+    alert("Listo, ya puedes verificar");
     $(".btn_verificar").click( function(event){
         //console.log(event.currentTarget.attributes.value.value);
         const uid = event.currentTarget.attributes.value.value;
-        let reason = prompt("Por favor ingrese la razón");
+        let reason = prompt("Por favor ingrese la razón", "Cuenta con todo los documentos correctos.");
         //alert(reason);
-        update_check(uid, reason);
+        if(reason) {
+            update_check(uid, reason);
+        } else {
+            alert("Cancelaste la acción");
+        }
 
     });
     $(".btn_verificar_rechazar").click( function(event){
         //console.log(event.currentTarget.attributes.value.value);
         const uid = event.currentTarget.attributes.value.value;
         //update_check(uid);
-        let reason = prompt("Por favor ingrese la razón");
-        newKey_rechazar(uid, reason);
+        let reason = prompt("Por favor ingrese la razón", "Rechazado por...");
+        if (reason) {
+            newKey_rechazar(uid, reason);
+        } else {
+            alert("Cancelaste la acción");
+        }
 
     });
 }
-
-setTimeout(verArch, 5000);
 
 function update_check(uid, reason){
     const db = getDatabase();
