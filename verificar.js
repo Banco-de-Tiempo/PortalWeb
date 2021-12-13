@@ -80,11 +80,10 @@ function check_status(){
     }, {
         onlyOnce: true
     });
-    alert("Favor espere unos segundos");
+    alert("Cargando los datos, favor de esperar unos segundos");
 }
 
 function verArch(){
-    alert("Listo, ya puede verificar");
     var variable = document.querySelectorAll(".btn_verificar");
     console.log(variable);
     $(".btn_verificar").click( function(event){
@@ -105,7 +104,7 @@ function verArch(){
     });
 }
 
-setTimeout(verArch, 10000);
+setTimeout(verArch, 5000);
 
 function update_check(uid, reason){
     const db = getDatabase();
