@@ -75,7 +75,6 @@ function check_status(){
         if (encontrado == false) {
             alert("Todos los usuarios están verificados");
         }
-
     
     }, {
         onlyOnce: true
@@ -94,6 +93,7 @@ function verArch(){
         //alert(reason);
         if(reason) {
             update_check(uid, reason);
+            location.reload();
         } else {
             alert("Cancelaste la acción");
         }
