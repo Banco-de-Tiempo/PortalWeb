@@ -25,9 +25,8 @@ $("#logoutButton").on("click", function(){
 //Preparar las condiciones para mostrar los datos en la tabla
 const tabla = document.querySelector('#list_verificar tbody');
 
-
+//Mostrar la lista de usuarios no verificados
 check_status();
-
 
 //Funcion de ver las personas no verificadas
 function check_status(){
@@ -82,30 +81,42 @@ function check_status(){
     alert("Cargando los datos, favor de esperar unos segundos");
 }
 
+//Esperar que cargue todo los contenidos, 5 segundos
 setTimeout(verArch, 5000);
 
 function verArch(){
     alert("Listo, ya puedes verificar");
+
+    //Listener button Aceptar
     $(".btn_verificar").click( function(event){
         //console.log(event.currentTarget.attributes.value.value);
+        //Tomar el uid del botón
         const uid = event.currentTarget.attributes.value.value;
-        let reason = prompt("Por favor ingrese la razón", "Cuenta con todo los documentos correctos.");
+        //Diálogo de aceptación
+        let reason = prompt("Por favor ingrese la razón", "Cuentan con todos los documentos correctos.");
         //alert(reason);
         if (reason) {
+            //Actualizar en firebase con la razón
             update_check(uid, reason);
             alert("Recargando la página");
+            //F5
             location.reload();
         } else {
             alert("Cancelaste la acción");
         }
 
     });
+    
+    //Listener button Rechazar
     $(".btn_verificar_rechazar").click( function(event){
         //console.log(event.currentTarget.attributes.value.value);
+        //Tomar el uid del botón
         const uid = event.currentTarget.attributes.value.value;
         //update_check(uid);
+        //Diálogo de rechazo
         let reason = prompt("Por favor ingrese la razón", "Rechazado por...");
         if (reason) {
+            //Actualizar en firebase con la razón
             newKey_rechazar(uid, reason);
         } else {
             alert("Cancelaste la acción");
@@ -114,10 +125,12 @@ function verArch(){
     });
 }
 
+//Actualizar en la base de datos
 function update_check(uid, reason){
     const db = getDatabase();
+    //Generar un newKey para la notificación
     newKey(uid, reason);
-
+    //Actualiza en la base de datos con el estatus de Verificado
     update(ref(db, "Users/" + uid), {
         status: "Verificado",
     }).then(() => {
@@ -128,36 +141,38 @@ function update_check(uid, reason){
     });
 }
 
-
+//Generar newKey en caso de aceptado
 function newKey(uid, reason) {
     const db = getDatabase();
+    //Preparar los datos
     const postData = {
         job: reason,
         status: 0,
         type: "verificationC"
       };
-
+    //newKey
     const newPostKey = push(child(ref(db), "Users/" + uid + "notification/")).key;
 
-    // Write the new post's data simultaneously in the posts list and the user's post list.
+    //Escribir los datos actulizados en la notificacion con el newKey
     const updates = {};
     updates["Users/" + uid + "/notification/" + newPostKey] = postData;
 
     return update(ref(db), updates);
 }
 
-
+//Generar newKey en caso de rechazo
 function newKey_rechazar(uid, reason) {
     const db = getDatabase();
+    //Preparar los datos
     const postData = {
         job: reason,
         status: 0,
         type: "verificationF"
       };
-
+    //newKey
     const newPostKey = push(child(ref(db), "Users/" + uid + "notification/")).key;
 
-    // Write the new post's data simultaneously in the posts list and the user's post list.
+    //Escribir los datos actulizados en la notificacion con el newKey
     const updates = {};
     updates["Users/" + uid + "/notification/" + newPostKey] = postData;
 
