@@ -65,3 +65,6 @@ margin-right: auto;
 .button{
   display: block;
 }
+.button_margin{
+  margin-top: 10px;
+}
