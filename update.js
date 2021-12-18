@@ -37,8 +37,6 @@ $("#btn_update_user").on("click", function(){
         age = "";
     }
 
-    var pronoun=$('#pronoun').val();
-
     //Trabajo 1
     var job1=$('#job1').val();
     var jobdesc1=$('#jobdesc1').val();
@@ -78,7 +76,7 @@ $("#btn_update_user").on("click", function(){
     if($('#sabado3').is(':checked')){ datejob3 = datejob3 + "S "; }
     if($('#domingo3').is(':checked')){ datejob3 = datejob3 + "D "; }
     
-    update_user(username, phone, address, age, pronoun, job1, jobdesc1, datejob1, job2, jobdesc2, datejob2, job3, jobdesc3, datejob3);
+    update_user(username, phone, address, age, job1, jobdesc1, datejob1, job2, jobdesc2, datejob2, job3, jobdesc3, datejob3);
     
 });
 
@@ -109,7 +107,7 @@ function checkauth(){
     });
 }
 
-function update_user(username, phone, address, age, pronoun, job1, jobdesc1, datejob1, job2, jobdesc2, datejob2, job3, jobdesc3, datejob3){
+function update_user(username, phone, address, age, job1, jobdesc1, datejob1, job2, jobdesc2, datejob2, job3, jobdesc3, datejob3){
     const db = getDatabase();
     const starCountRef = ref(db, 'Users/');
 
@@ -132,7 +130,6 @@ function update_user(username, phone, address, age, pronoun, job1, jobdesc1, dat
                     phone: phone,
                     address: address,
                     age: age,
-                    pronoun: pronoun,
                     status: "No Verificado",
                     jobs: {
                         T1: {

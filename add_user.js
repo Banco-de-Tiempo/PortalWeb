@@ -38,7 +38,6 @@ $("#btn_add_user").on("click", function(){
         age = "";
     }
 
-    var pronoun=$('#pronoun').val();
     var job=$('#job').val();
     var jobdesc=$('#jobdesc').val();
     var datejob = "";
@@ -59,7 +58,7 @@ $("#btn_add_user").on("click", function(){
         alert("Contraseñas distintas");
     }
     else{
-        register_user(username, email, pass, phone, address, age, pronoun, job, jobdesc, datejob);
+        register_user(username, email, pass, phone, address, age, job, jobdesc, datejob);
     }
 });
 
@@ -90,7 +89,7 @@ function checkauth(){
     });
 }
 
-function register_user(username, email, password, phone, address, age, pronoun, job, jobdesc, datejob){
+function register_user(username, email, password, phone, address, age, job, jobdesc, datejob){
     const auth = getAuth();
     const db = getDatabase();
     //Registrar administrador en database
@@ -107,7 +106,6 @@ function register_user(username, email, password, phone, address, age, pronoun, 
             phone: phone,
             address: address,
             age: age,
-            pronoun: pronoun,
             status: "No Verificado",
             rating: "0",
             totjobs: "0",

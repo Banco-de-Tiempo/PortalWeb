@@ -151,11 +151,11 @@ function newKey(uid, reason) {
         type: "verificationC"
       };
     //newKey
-    const newPostKey = push(child(ref(db), "Users/" + uid + "notification/")).key;
+    const newPostKey = push(child(ref(db), "Users/" + uid + "notifications/")).key;
 
     //Escribir los datos actulizados en la notificacion con el newKey
     const updates = {};
-    updates["Users/" + uid + "/notification/" + newPostKey] = postData;
+    updates["Users/" + uid + "/notifications/" + newPostKey] = postData;
 
     return update(ref(db), updates);
 }
@@ -170,11 +170,11 @@ function newKey_rechazar(uid, reason) {
         type: "verificationF"
       };
     //newKey
-    const newPostKey = push(child(ref(db), "Users/" + uid + "notification/")).key;
+    const newPostKey = push(child(ref(db), "Users/" + uid + "notifications/")).key;
 
     //Escribir los datos actulizados en la notificacion con el newKey
     const updates = {};
-    updates["Users/" + uid + "/notification/" + newPostKey] = postData;
+    updates["Users/" + uid + "/notifications/" + newPostKey] = postData;
 
     return update(ref(db), updates);
 }
